@@ -10,7 +10,7 @@ import SwiftUI
 struct ContentView: View {
     @EnvironmentObject var timerModel: TimerModel
     var body: some View {
-        Home()
+        TimerView()
             .environmentObject(timerModel)
     }
 }

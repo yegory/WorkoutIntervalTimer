@@ -11,7 +11,7 @@ import SwiftUI
 struct WorkoutApp: App {
     // Since we're doing background fetching -> initializing here
     @StateObject var timerModel: TimerModel = .init()
-    // Scene PHase
+    // Scene Phase
     @Environment(\.scenePhase) var phase
     // Storing Last Timestamp
     @State var lastActiveTimeStamp: Date = Date()

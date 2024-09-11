@@ -77,6 +77,9 @@ class TimerModel: NSObject, ObservableObject, UNUserNotificationCenterDelegate {
         minutes = (totalSeconds / 60) % 60
         seconds = (totalSeconds % 60)
         timerStringValue = "\(hours == 0 ? "" : "\(hours):")\(minutes >= 10 ? "\(minutes)" : "0\(minutes)"):\(seconds >= 10 ? "\(seconds)" : "0\(seconds)")"
+        if totalSeconds == 3 {
+            SoundManager.instance.playPrepareBeeps()
+        }
         if totalSeconds == 0 {
             isStarted = false
             isFinished = true

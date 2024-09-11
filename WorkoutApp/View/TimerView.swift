@@ -1,5 +1,5 @@
 //
-//  Home.swift
+//  TimerView.swift
 //  WorkoutApp
 //
 //  Created by Yegor Yeryomenko on 2024-09-02.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Home: View {
+struct TimerView: View {
     @EnvironmentObject var timerModel: TimerModel
 //    @State private var showPicker = false
     var body: some View {

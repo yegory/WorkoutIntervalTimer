@@ -7,25 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A77053812C92443400A3EA7F /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77053802C92443400A3EA7F /* SoundManager.swift */; };
 		A78D604F2C86DA54009DC239 /* WorkoutApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78D604E2C86DA54009DC239 /* WorkoutApp.swift */; };
 		A78D60512C86DA54009DC239 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78D60502C86DA54009DC239 /* ContentView.swift */; };
 		A78D60532C86DA56009DC239 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A78D60522C86DA56009DC239 /* Assets.xcassets */; };
 		A78D60562C86DA56009DC239 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A78D60552C86DA56009DC239 /* Preview Assets.xcassets */; };
 		A78D605F2C86DABA009DC239 /* TimerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78D605E2C86DABA009DC239 /* TimerModel.swift */; };
-		A78D60612C86DBD4009DC239 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78D60602C86DBD4009DC239 /* Home.swift */; };
-		A79589572C9179DC004C0BC0 /* alert.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A79589562C9179DC004C0BC0 /* alert.mp3 */; };
+		A78D60612C86DBD4009DC239 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78D60602C86DBD4009DC239 /* TimerView.swift */; };
+		A79589572C9179DC004C0BC0 /* prepare_beeps.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A79589562C9179DC004C0BC0 /* prepare_beeps.mp3 */; };
 		A7B13BAC2C87EC8600CF52A6 /* TimePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B13BAB2C87EC8600CF52A6 /* TimePickerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A77053802C92443400A3EA7F /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
 		A78D604B2C86DA54009DC239 /* WorkoutApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorkoutApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A78D604E2C86DA54009DC239 /* WorkoutApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutApp.swift; sourceTree = "<group>"; };
 		A78D60502C86DA54009DC239 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A78D60522C86DA56009DC239 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A78D60552C86DA56009DC239 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A78D605E2C86DABA009DC239 /* TimerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerModel.swift; sourceTree = "<group>"; };
-		A78D60602C86DBD4009DC239 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
-		A79589562C9179DC004C0BC0 /* alert.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = alert.mp3; sourceTree = "<group>"; };
+		A78D60602C86DBD4009DC239 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
+		A79589562C9179DC004C0BC0 /* prepare_beeps.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = prepare_beeps.mp3; sourceTree = "<group>"; };
 		A7B13BAB2C87EC8600CF52A6 /* TimePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -40,6 +42,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A770537F2C9239E000A3EA7F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		A78D60422C86DA54009DC239 = {
 			isa = PBXGroup;
 			children = (
@@ -59,6 +68,7 @@
 		A78D604D2C86DA54009DC239 /* WorkoutApp */ = {
 			isa = PBXGroup;
 			children = (
+				A770537F2C9239E000A3EA7F /* Model */,
 				A79589552C917969004C0BC0 /* Sounds */,
 				A78D605D2C86DA92009DC239 /* ViewModel */,
 				A78D605C2C86DA8E009DC239 /* View */,
@@ -81,7 +91,7 @@
 		A78D605C2C86DA8E009DC239 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				A78D60602C86DBD4009DC239 /* Home.swift */,
+				A78D60602C86DBD4009DC239 /* TimerView.swift */,
 				A7B13BAB2C87EC8600CF52A6 /* TimePickerView.swift */,
 			);
 			path = View;
@@ -91,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				A78D605E2C86DABA009DC239 /* TimerModel.swift */,
+				A77053802C92443400A3EA7F /* SoundManager.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -98,7 +109,7 @@
 		A79589552C917969004C0BC0 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
-				A79589562C9179DC004C0BC0 /* alert.mp3 */,
+				A79589562C9179DC004C0BC0 /* prepare_beeps.mp3 */,
 			);
 			path = Sounds;
 			sourceTree = "<group>";
@@ -163,7 +174,7 @@
 			files = (
 				A78D60562C86DA56009DC239 /* Preview Assets.xcassets in Resources */,
 				A78D60532C86DA56009DC239 /* Assets.xcassets in Resources */,
-				A79589572C9179DC004C0BC0 /* alert.mp3 in Resources */,
+				A79589572C9179DC004C0BC0 /* prepare_beeps.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -177,8 +188,9 @@
 				A7B13BAC2C87EC8600CF52A6 /* TimePickerView.swift in Sources */,
 				A78D605F2C86DABA009DC239 /* TimerModel.swift in Sources */,
 				A78D60512C86DA54009DC239 /* ContentView.swift in Sources */,
-				A78D60612C86DBD4009DC239 /* Home.swift in Sources */,
+				A78D60612C86DBD4009DC239 /* TimerView.swift in Sources */,
 				A78D604F2C86DA54009DC239 /* WorkoutApp.swift in Sources */,
+				A77053812C92443400A3EA7F /* SoundManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
