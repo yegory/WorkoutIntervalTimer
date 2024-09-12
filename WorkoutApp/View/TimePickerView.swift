@@ -10,29 +10,27 @@ struct TimePickerView: View {
     @Binding var selectedHour: Int
     @Binding var selectedMinute: Int
     @Binding var selectedSecond: Int
-    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         VStack(spacing: 30) {
             
-            Text("Select Time")
-                .font(.title2)
-                .padding(.top)
-
             HStack(spacing: 0) {
                 // Hour Picker
                 HStack {
                     Picker("Hours", selection: $selectedHour) {
                         ForEach(0...23, id: \.self) { value in
                             Text("\(value)").tag(value)
+                                .foregroundColor(.white)
                         }
                     }
                     .pickerStyle(WheelPickerStyle())
                     .frame(maxWidth: .infinity, maxHeight: 150)
-                    .background(Color.clear)
+                    .background(Color.black) // Dark background for the picker
+                    .clipped()
                     
                     Text("hr")
                         .font(.title3)
+                        .foregroundColor(.white) // White text
                 }
                 
                 // Minute Picker
@@ -40,14 +38,17 @@ struct TimePickerView: View {
                     Picker("Minutes", selection: $selectedMinute) {
                         ForEach(0...59, id: \.self) { value in
                             Text("\(value)").tag(value)
+                                .foregroundColor(.white)
                         }
                     }
                     .pickerStyle(WheelPickerStyle())
                     .frame(maxWidth: .infinity, maxHeight: 150)
-                    .background(Color.clear)
+                    .background(Color.black) // Dark background for the picker
+                    .clipped()
                     
                     Text("min")
                         .font(.title2)
+                        .foregroundColor(.white) // White text
                 }
                 
                 // Second Picker
@@ -55,28 +56,23 @@ struct TimePickerView: View {
                     Picker("Seconds", selection: $selectedSecond) {
                         ForEach(0...59, id: \.self) { value in
                             Text("\(value)").tag(value)
+                                .foregroundColor(.white)
                         }
                     }
                     .pickerStyle(WheelPickerStyle())
                     .frame(maxWidth: .infinity, maxHeight: 150)
-                    .background(Color.clear)
+                    .background(Color.black) // Dark background for the picker
+                    .clipped()
                     
                     Text("sec")
                         .font(.title2)
+                        .foregroundColor(.white) // White text
                 }
             }
-
-            Button("Done") {
-                presentationMode.wrappedValue.dismiss()
-            }
-            .font(.title2)
-            .padding()
         }
         .padding()
-        .background{
-            Color("BGAsset")
-                .ignoresSafeArea()
-        }
+        .background(Color.black) // Dark background for the entire view
+        .clipShape(RoundedRectangle(cornerRadius: 10)) // Optional: rounded corners for a cleaner look
     }
 }
 

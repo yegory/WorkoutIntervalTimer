@@ -9,12 +9,16 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var timerModel: TimerModel
+    
     var body: some View {
-        TimerView()
-            .environmentObject(timerModel)
+        NavigationView {
+            TimerSetUpView()
+                .environmentObject(timerModel)
+        }
     }
 }
 
 #Preview {
     ContentView()
+        .environmentObject(TimerModel())
 }

@@ -7,19 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A7488E3C2C939A4400FBE632 /* prepare_beeps.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A7488E3B2C939A4400FBE632 /* prepare_beeps.mp3 */; };
 		A77053812C92443400A3EA7F /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77053802C92443400A3EA7F /* SoundManager.swift */; };
+		A77053832C924D4F00A3EA7F /* TimerHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77053822C924D4F00A3EA7F /* TimerHandler.swift */; };
+		A77053852C924E7900A3EA7F /* Stopwatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77053842C924E7900A3EA7F /* Stopwatch.swift */; };
+		A77053872C9287EC00A3EA7F /* TimerSetUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77053862C9287EC00A3EA7F /* TimerSetUpView.swift */; };
+		A77053892C9291B700A3EA7F /* NumbersOnlyViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77053882C9291B700A3EA7F /* NumbersOnlyViewModifier.swift */; };
 		A78D604F2C86DA54009DC239 /* WorkoutApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78D604E2C86DA54009DC239 /* WorkoutApp.swift */; };
 		A78D60512C86DA54009DC239 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78D60502C86DA54009DC239 /* ContentView.swift */; };
 		A78D60532C86DA56009DC239 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A78D60522C86DA56009DC239 /* Assets.xcassets */; };
 		A78D60562C86DA56009DC239 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A78D60552C86DA56009DC239 /* Preview Assets.xcassets */; };
 		A78D605F2C86DABA009DC239 /* TimerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78D605E2C86DABA009DC239 /* TimerModel.swift */; };
 		A78D60612C86DBD4009DC239 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78D60602C86DBD4009DC239 /* TimerView.swift */; };
-		A79589572C9179DC004C0BC0 /* prepare_beeps.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A79589562C9179DC004C0BC0 /* prepare_beeps.mp3 */; };
 		A7B13BAC2C87EC8600CF52A6 /* TimePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B13BAB2C87EC8600CF52A6 /* TimePickerView.swift */; };
+		A7C1F77C2C92D2CF00D2A3A3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7C1F77B2C92D2CF00D2A3A3 /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A7488E3B2C939A4400FBE632 /* prepare_beeps.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = prepare_beeps.mp3; sourceTree = "<group>"; };
 		A77053802C92443400A3EA7F /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
+		A77053822C924D4F00A3EA7F /* TimerHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TimerHandler.swift; path = WorkoutApp/Model/TimerHandler.swift; sourceTree = SOURCE_ROOT; };
+		A77053842C924E7900A3EA7F /* Stopwatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stopwatch.swift; sourceTree = "<group>"; };
+		A77053862C9287EC00A3EA7F /* TimerSetUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerSetUpView.swift; sourceTree = "<group>"; };
+		A77053882C9291B700A3EA7F /* NumbersOnlyViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumbersOnlyViewModifier.swift; sourceTree = "<group>"; };
 		A78D604B2C86DA54009DC239 /* WorkoutApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorkoutApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A78D604E2C86DA54009DC239 /* WorkoutApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutApp.swift; sourceTree = "<group>"; };
 		A78D60502C86DA54009DC239 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -27,8 +37,8 @@
 		A78D60552C86DA56009DC239 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A78D605E2C86DABA009DC239 /* TimerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerModel.swift; sourceTree = "<group>"; };
 		A78D60602C86DBD4009DC239 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
-		A79589562C9179DC004C0BC0 /* prepare_beeps.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = prepare_beeps.mp3; sourceTree = "<group>"; };
 		A7B13BAB2C87EC8600CF52A6 /* TimePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerView.swift; sourceTree = "<group>"; };
+		A7C1F77B2C92D2CF00D2A3A3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,9 +52,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A7488E3A2C939A2900FBE632 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				A7488E3B2C939A4400FBE632 /* prepare_beeps.mp3 */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
 		A770537F2C9239E000A3EA7F /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A77053802C92443400A3EA7F /* SoundManager.swift */,
+				A77053882C9291B700A3EA7F /* NumbersOnlyViewModifier.swift */,
+				A77053822C924D4F00A3EA7F /* TimerHandler.swift */,
+				A77053842C924E7900A3EA7F /* Stopwatch.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -68,8 +90,9 @@
 		A78D604D2C86DA54009DC239 /* WorkoutApp */ = {
 			isa = PBXGroup;
 			children = (
+				A7488E3A2C939A2900FBE632 /* Sounds */,
+				A7C1F77B2C92D2CF00D2A3A3 /* AppDelegate.swift */,
 				A770537F2C9239E000A3EA7F /* Model */,
-				A79589552C917969004C0BC0 /* Sounds */,
 				A78D605D2C86DA92009DC239 /* ViewModel */,
 				A78D605C2C86DA8E009DC239 /* View */,
 				A78D604E2C86DA54009DC239 /* WorkoutApp.swift */,
@@ -93,6 +116,7 @@
 			children = (
 				A78D60602C86DBD4009DC239 /* TimerView.swift */,
 				A7B13BAB2C87EC8600CF52A6 /* TimePickerView.swift */,
+				A77053862C9287EC00A3EA7F /* TimerSetUpView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -101,17 +125,8 @@
 			isa = PBXGroup;
 			children = (
 				A78D605E2C86DABA009DC239 /* TimerModel.swift */,
-				A77053802C92443400A3EA7F /* SoundManager.swift */,
 			);
 			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		A79589552C917969004C0BC0 /* Sounds */ = {
-			isa = PBXGroup;
-			children = (
-				A79589562C9179DC004C0BC0 /* prepare_beeps.mp3 */,
-			);
-			path = Sounds;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -172,9 +187,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7488E3C2C939A4400FBE632 /* prepare_beeps.mp3 in Resources */,
 				A78D60562C86DA56009DC239 /* Preview Assets.xcassets in Resources */,
 				A78D60532C86DA56009DC239 /* Assets.xcassets in Resources */,
-				A79589572C9179DC004C0BC0 /* prepare_beeps.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -185,12 +200,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7C1F77C2C92D2CF00D2A3A3 /* AppDelegate.swift in Sources */,
 				A7B13BAC2C87EC8600CF52A6 /* TimePickerView.swift in Sources */,
 				A78D605F2C86DABA009DC239 /* TimerModel.swift in Sources */,
+				A77053892C9291B700A3EA7F /* NumbersOnlyViewModifier.swift in Sources */,
+				A77053872C9287EC00A3EA7F /* TimerSetUpView.swift in Sources */,
 				A78D60512C86DA54009DC239 /* ContentView.swift in Sources */,
 				A78D60612C86DBD4009DC239 /* TimerView.swift in Sources */,
 				A78D604F2C86DA54009DC239 /* WorkoutApp.swift in Sources */,
 				A77053812C92443400A3EA7F /* SoundManager.swift in Sources */,
+				A77053832C924D4F00A3EA7F /* TimerHandler.swift in Sources */,
+				A77053852C924E7900A3EA7F /* Stopwatch.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

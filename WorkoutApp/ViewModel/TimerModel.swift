@@ -8,94 +8,149 @@
 import SwiftUI
 
 class TimerModel: NSObject, ObservableObject, UNUserNotificationCenterDelegate {
-    // Timer properties
-    @Published var progress: CGFloat = 1
-    @Published var timerStringValue: String = "00:00"
+    // Timer-related properties
     @Published var isStarted: Bool = false
+    @Published var isFinished: Bool = false
+    @Published var isPaused: Bool = true
     @Published var addNewTimer: Bool = false
+    @Published var numberOfSets: Int = 1
+    @Published var currentSet: Int = 1
+    @Published var isAlertSoundOn: Bool = true
     
+    // Time Handling
     @Published var hours: Int = 0
     @Published var minutes: Int = 0
     @Published var seconds: Int = 0
+    @Published var timeLeft: Int = 0
+    @Published var secondsPerSet: Int = 0
+    @Published var timerStringValue: String = "00:00"
     
-    // Total Seconds
-    @Published var totalSeconds: Int = 0
-    @Published var staticTotalSeconds: Int = 0
+    @Published var stopwatch: Stopwatch = .init()
+    private let instance = SoundManager.instance
     
-    // Post Timer Properties
-    @Published var isFinished: Bool = false
-    
-    // Since it's NSObject
+    // Default initializer
     override init() {
         super.init()
         self.authorizeNotification()
+        instance.preloadPrepareBeeps() // Preload sounds here during initialization
     }
     
-    // Requesting Notification Access
-    func authorizeNotification() {
-        UNUserNotificationCenter.current().requestAuthorization(options: [.sound, .alert, .badge]){ _, _ in
-        }
-        
-        // To show in-app notification
-        UNUserNotificationCenter.current().delegate = self
+    func updateTimerStringValue() {
+           timerStringValue = "\(hours == 0 ? "" : "\(hours):")\(minutes >= 10 ? "\(minutes)" : "0\(minutes)"):\(seconds >= 10 ? "\(seconds)" : "0\(seconds)")"
     }
     
-    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        completionHandler([.sound, .banner])
+    func setHMS(seconds: Int = 0) {
+        self.hours = seconds / 3600
+        self.minutes = (seconds / 60) % 60
+        self.seconds = (seconds % 60)
+    }
+    
+    func prepareTimer() {
+        secondsPerSet = (hours * 3600) + (minutes * 60) + seconds
+        timeLeft = secondsPerSet
+        updateTimerStringValue()
     }
     
     func startTimer() {
-        withAnimation(.easeInOut(duration: 0.25)) {isStarted = true}
-        // Setting string time value
-        timerStringValue = "\(hours == 0 ? "" : "\(hours):")\(minutes >= 10 ? "\(minutes)" : "0\(minutes)"):\(seconds >= 10 ? "\(seconds)" : "0\(seconds)")"
-        // Calculating Total Seconds for Timer animation
-        totalSeconds = (hours * 3600) + (minutes * 60) + seconds
-        staticTotalSeconds = totalSeconds
+        isStarted = true
+        isPaused = false
         addNewTimer = false
-        addNotification()
+        prepareTimer()
+        stopwatch.start()
+//        addNotification()
     }
     
-    func stopTimer() {
-        withAnimation {
-            isStarted = false
-            hours = 0
-            minutes = 0
-            seconds = 0
-            progress = 1
-        }
-        totalSeconds = 0
-        staticTotalSeconds = 0
-        timerStringValue = "00:00"
+    func pauseTimer() {
+        isPaused = true
+        stopwatch.pause()
+        
     }
+    
+    func resumeTimer() {
+        isPaused = false
+        stopwatch.resume()
+    }
+    
+    func resetTimer() {
+        isStarted = false
+        isFinished = false
+        isPaused = true
+        setHMS(seconds: secondsPerSet)
+        timeLeft = secondsPerSet
+        updateTimerStringValue()
+        currentSet = 1
+        stopwatch.reset()
+    }
+    
+//    func pauseTimer() {
+//        withAnimation {
+//            isStarted = false
+//            hours = 0
+//            minutes = 0
+//            seconds = 0
+//            stopwatch.stop()
+//        }
+//        secondsPerSet = 0
+//        timeLeft = 0
+//        timerStringValue = "00:00"
+//    }
+//    func resetTimer() {
+    
+//    func pauseTimer() {
+//        withAnimation {
+//            isStarted = false
+//            hours = 0
+//            minutes = 0
+//            seconds = 0
+//            stopwatch.stop()
+//        }
+//        secondsPerSet = 0
+//        timeLeft = 0
+//        timerStringValue = "00:00"
+//    }
     
     func updateTimer() {
-        totalSeconds -= 1
-        progress = CGFloat(totalSeconds) / CGFloat(staticTotalSeconds)
-        progress = (progress < 0 ? 0 : progress)
-        // 60 Minutes * 60 seconds
-        hours = totalSeconds / 3600
-        minutes = (totalSeconds / 60) % 60
-        seconds = (totalSeconds % 60)
-        timerStringValue = "\(hours == 0 ? "" : "\(hours):")\(minutes >= 10 ? "\(minutes)" : "0\(minutes)"):\(seconds >= 10 ? "\(seconds)" : "0\(seconds)")"
-        if totalSeconds == 3 {
-            SoundManager.instance.playPrepareBeeps()
+        timeLeft -= 1
+        
+        if isAlertSoundOn && timeLeft == 3 {
+            instance.playPrepareBeeps()
         }
-        if totalSeconds == 0 {
-            isStarted = false
-            isFinished = true
+        if timeLeft == 0 {
+            if currentSet >= numberOfSets {
+                isStarted = false
+                isFinished = true
+            } else {
+                timeLeft = secondsPerSet
+                updateTimerStringValue()
+                currentSet += 1
+            }
         }
+        setHMS(seconds: timeLeft)
+        updateTimerStringValue()
     }
-    
+
     func addNotification() {
         let content = UNMutableNotificationContent()
         content.title = "Timer"
         content.subtitle = "Timer Finished"
         content.sound = UNNotificationSound.default
         
-        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content,
-                                            trigger: UNTimeIntervalNotificationTrigger(timeInterval: TimeInterval(staticTotalSeconds), repeats: false)
+        let request = UNNotificationRequest(
+            identifier: UUID().uuidString,
+            content: content,
+            trigger: UNTimeIntervalNotificationTrigger(timeInterval: TimeInterval(secondsPerSet * numberOfSets), repeats: false)
         )
         
         UNUserNotificationCenter.current().add(request)
+    }
+    
+    // Notification setup
+    func authorizeNotification() {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.sound, .alert, .badge]){ _, _ in }
+        UNUserNotificationCenter.current().delegate = self
+    }
+
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.sound, .banner])
     }
 }
