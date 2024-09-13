@@ -15,7 +15,10 @@ class SoundManager: NSObject, AVAudioPlayerDelegate {
     private override init() {
         super.init() // Call the NSObject initializer
         prepareAudioSession()
-        preloadSound(soundName: BEEP)
+        preloadSound(soundName: BEEP) { [weak self] in
+            // Stop the sound after it has been prepared
+            self?.stopSound()
+        }
     }
     
     // Prepare the audio session in advance
@@ -30,7 +33,7 @@ class SoundManager: NSObject, AVAudioPlayerDelegate {
     }
     
     // Preload the sound so it doesn't cause delays on the first play
-    private func preloadSound(soundName: String, soundExtension: String = "mp3") {
+    private func preloadSound(soundName: String, soundExtension: String = "mp3", completion: @escaping () -> Void) {
         DispatchQueue.global(qos: .background).async {
             guard let url = Bundle.main.url(forResource: soundName, withExtension: soundExtension) else {
                 print("Sound file not found for preloading: \(soundName).\(soundExtension)")
@@ -40,6 +43,9 @@ class SoundManager: NSObject, AVAudioPlayerDelegate {
             do {
                 self.audioPlayer = try AVAudioPlayer(contentsOf: url)
                 self.audioPlayer?.prepareToPlay() // Preload and prepare the player
+                DispatchQueue.main.async {
+                    completion() // Call the completion handler after preparation
+                }
             } catch {
                 print("Failed to preload sound: \(error.localizedDescription)")
             }
@@ -73,9 +79,13 @@ class SoundManager: NSObject, AVAudioPlayerDelegate {
     func playPrepareBeeps() {
         playSound(soundName: BEEP)
     }
+    
     // Play the prepare beeps (using preloaded sound)
     func preloadPrepareBeeps() {
-        preloadSound(soundName: BEEP)
+        preloadSound(soundName: BEEP) { [weak self] in
+            // Stop the sound after it has been prepared
+            self?.stopSound()
+        }
     }
     
     // Stop playing the current sound

@@ -90,9 +90,12 @@ class TimerModel: NSObject, ObservableObject, UNUserNotificationCenterDelegate {
         timeLeft -= 1
         
         if isAlertSoundOn && timeLeft == 3 {
-            instance.playPrepareBeeps()
+            SoundManager.instance.playPrepareBeeps()
         }
         if timeLeft == 0 {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                SoundManager.instance.stopSound()
+            }
             if currentSet >= numberOfSets {
                 isStarted = false
                 isFinished = true
@@ -105,7 +108,6 @@ class TimerModel: NSObject, ObservableObject, UNUserNotificationCenterDelegate {
         setHMS(seconds: timeLeft)
         updateTimerStringValue()
     }
-    
     
 
     func addNotification() {
