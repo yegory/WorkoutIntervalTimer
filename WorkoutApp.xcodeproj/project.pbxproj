@@ -20,7 +20,6 @@
 		A78D605F2C86DABA009DC239 /* TimerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78D605E2C86DABA009DC239 /* TimerModel.swift */; };
 		A78D60612C86DBD4009DC239 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78D60602C86DBD4009DC239 /* TimerView.swift */; };
 		A7B13BAC2C87EC8600CF52A6 /* TimePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B13BAB2C87EC8600CF52A6 /* TimePickerView.swift */; };
-		A7C1F77C2C92D2CF00D2A3A3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7C1F77B2C92D2CF00D2A3A3 /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,7 +37,6 @@
 		A78D605E2C86DABA009DC239 /* TimerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerModel.swift; sourceTree = "<group>"; };
 		A78D60602C86DBD4009DC239 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		A7B13BAB2C87EC8600CF52A6 /* TimePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerView.swift; sourceTree = "<group>"; };
-		A7C1F77B2C92D2CF00D2A3A3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,7 +89,6 @@
 			isa = PBXGroup;
 			children = (
 				A7488E3A2C939A2900FBE632 /* Sounds */,
-				A7C1F77B2C92D2CF00D2A3A3 /* AppDelegate.swift */,
 				A770537F2C9239E000A3EA7F /* Model */,
 				A78D605D2C86DA92009DC239 /* ViewModel */,
 				A78D605C2C86DA8E009DC239 /* View */,
@@ -200,7 +197,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A7C1F77C2C92D2CF00D2A3A3 /* AppDelegate.swift in Sources */,
 				A7B13BAC2C87EC8600CF52A6 /* TimePickerView.swift in Sources */,
 				A78D605F2C86DABA009DC239 /* TimerModel.swift in Sources */,
 				A77053892C9291B700A3EA7F /* NumbersOnlyViewModifier.swift in Sources */,

@@ -10,7 +10,7 @@ import Foundation
 class Stopwatch: ObservableObject {
     @Published var elapsedTime: Int = 0
     private var timer: Timer?
-    private var isPaused: Bool = true
+    @Published var isPaused: Bool = true
     
     // Computed property to display time in "hh:mm:ss" format
     var displayTime: String {
@@ -25,6 +25,7 @@ class Stopwatch: ObservableObject {
             timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
                 guard let self = self else { return }
                 self.elapsedTime += 1
+                self.objectWillChange.send()  // This manually notifies any observers about the change
             }
         }
     }
@@ -53,5 +54,12 @@ class Stopwatch: ObservableObject {
         stop(reset: true) // Stop and reset time
         isPaused = false
     }
+    
+    func toggle() {
+        if isPaused {
+            resume()
+        } else {
+            pause()
+        }
+    }
 }
-

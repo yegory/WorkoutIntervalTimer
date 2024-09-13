@@ -32,7 +32,9 @@ class TimerModel: NSObject, ObservableObject, UNUserNotificationCenterDelegate {
     override init() {
         super.init()
         self.authorizeNotification()
-        instance.preloadPrepareBeeps() // Preload sounds here during initialization
+        
+        // Preload sounds here during initialization
+        instance.preloadPrepareBeeps()
     }
     
     func updateTimerStringValue() {
@@ -54,21 +56,23 @@ class TimerModel: NSObject, ObservableObject, UNUserNotificationCenterDelegate {
     func startTimer() {
         isStarted = true
         isPaused = false
+        stopwatch.isPaused = false
         addNewTimer = false
         prepareTimer()
         stopwatch.start()
-//        addNotification()
+        // TODO: Add notifications and handle app in background edge cases.
+        // addNotification()
     }
     
     func pauseTimer() {
         isPaused = true
-        stopwatch.pause()
-        
     }
     
     func resumeTimer() {
         isPaused = false
-        stopwatch.resume()
+        if stopwatch.isPaused {
+            stopwatch.toggle()
+        }
     }
     
     func resetTimer() {
@@ -81,33 +85,6 @@ class TimerModel: NSObject, ObservableObject, UNUserNotificationCenterDelegate {
         currentSet = 1
         stopwatch.reset()
     }
-    
-//    func pauseTimer() {
-//        withAnimation {
-//            isStarted = false
-//            hours = 0
-//            minutes = 0
-//            seconds = 0
-//            stopwatch.stop()
-//        }
-//        secondsPerSet = 0
-//        timeLeft = 0
-//        timerStringValue = "00:00"
-//    }
-//    func resetTimer() {
-    
-//    func pauseTimer() {
-//        withAnimation {
-//            isStarted = false
-//            hours = 0
-//            minutes = 0
-//            seconds = 0
-//            stopwatch.stop()
-//        }
-//        secondsPerSet = 0
-//        timeLeft = 0
-//        timerStringValue = "00:00"
-//    }
     
     func updateTimer() {
         timeLeft -= 1
@@ -128,6 +105,8 @@ class TimerModel: NSObject, ObservableObject, UNUserNotificationCenterDelegate {
         setHMS(seconds: timeLeft)
         updateTimerStringValue()
     }
+    
+    
 
     func addNotification() {
         let content = UNMutableNotificationContent()
