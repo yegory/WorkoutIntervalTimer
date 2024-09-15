@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A7488E3C2C939A4400FBE632 /* prepare_beeps.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A7488E3B2C939A4400FBE632 /* prepare_beeps.mp3 */; };
 		A77053812C92443400A3EA7F /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77053802C92443400A3EA7F /* SoundManager.swift */; };
 		A77053832C924D4F00A3EA7F /* TimerHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77053822C924D4F00A3EA7F /* TimerHandler.swift */; };
 		A77053852C924E7900A3EA7F /* Stopwatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77053842C924E7900A3EA7F /* Stopwatch.swift */; };
@@ -19,11 +18,19 @@
 		A78D60562C86DA56009DC239 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A78D60552C86DA56009DC239 /* Preview Assets.xcassets */; };
 		A78D605F2C86DABA009DC239 /* TimerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78D605E2C86DABA009DC239 /* TimerModel.swift */; };
 		A78D60612C86DBD4009DC239 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78D60602C86DBD4009DC239 /* TimerView.swift */; };
+		A79776912C956046009DB4FA /* prepare_beeps_pan.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A79776902C956046009DB4FA /* prepare_beeps_pan.mp3 */; };
+		A79776932C956076009DB4FA /* prepare_beeps_mono.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A79776922C956076009DB4FA /* prepare_beeps_mono.mp3 */; };
+		A79776952C956139009DB4FA /* prepare_beeps_pan_trim.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A79776942C956138009DB4FA /* prepare_beeps_pan_trim.mp3 */; };
+		A79776972C9564DD009DB4FA /* blip_normal.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A79776962C9564DC009DB4FA /* blip_normal.mp3 */; };
+		A797769C2C95698C009DB4FA /* round_incoming_normal.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A797769A2C95698C009DB4FA /* round_incoming_normal.mp3 */; };
+		A797769D2C95698C009DB4FA /* round_incoming_loud.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A797769B2C95698C009DB4FA /* round_incoming_loud.mp3 */; };
+		A79776A02C95699F009DB4FA /* archive_normal.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A797769E2C95699F009DB4FA /* archive_normal.mp3 */; };
+		A79776A12C95699F009DB4FA /* archive_loud.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A797769F2C95699F009DB4FA /* archive_loud.mp3 */; };
+		A79776A32C9569C0009DB4FA /* blip_loud.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A79776A22C9569C0009DB4FA /* blip_loud.mp3 */; };
 		A7B13BAC2C87EC8600CF52A6 /* TimePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B13BAB2C87EC8600CF52A6 /* TimePickerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		A7488E3B2C939A4400FBE632 /* prepare_beeps.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = prepare_beeps.mp3; sourceTree = "<group>"; };
 		A77053802C92443400A3EA7F /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
 		A77053822C924D4F00A3EA7F /* TimerHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TimerHandler.swift; path = WorkoutApp/Model/TimerHandler.swift; sourceTree = SOURCE_ROOT; };
 		A77053842C924E7900A3EA7F /* Stopwatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stopwatch.swift; sourceTree = "<group>"; };
@@ -36,6 +43,15 @@
 		A78D60552C86DA56009DC239 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A78D605E2C86DABA009DC239 /* TimerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerModel.swift; sourceTree = "<group>"; };
 		A78D60602C86DBD4009DC239 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
+		A79776902C956046009DB4FA /* prepare_beeps_pan.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = prepare_beeps_pan.mp3; sourceTree = "<group>"; };
+		A79776922C956076009DB4FA /* prepare_beeps_mono.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = prepare_beeps_mono.mp3; sourceTree = "<group>"; };
+		A79776942C956138009DB4FA /* prepare_beeps_pan_trim.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = prepare_beeps_pan_trim.mp3; sourceTree = "<group>"; };
+		A79776962C9564DC009DB4FA /* blip_normal.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = blip_normal.mp3; sourceTree = "<group>"; };
+		A797769A2C95698C009DB4FA /* round_incoming_normal.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = round_incoming_normal.mp3; sourceTree = "<group>"; };
+		A797769B2C95698C009DB4FA /* round_incoming_loud.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = round_incoming_loud.mp3; sourceTree = "<group>"; };
+		A797769E2C95699F009DB4FA /* archive_normal.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = archive_normal.mp3; sourceTree = "<group>"; };
+		A797769F2C95699F009DB4FA /* archive_loud.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = archive_loud.mp3; sourceTree = "<group>"; };
+		A79776A22C9569C0009DB4FA /* blip_loud.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = blip_loud.mp3; sourceTree = "<group>"; };
 		A7B13BAB2C87EC8600CF52A6 /* TimePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -53,7 +69,15 @@
 		A7488E3A2C939A2900FBE632 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
-				A7488E3B2C939A4400FBE632 /* prepare_beeps.mp3 */,
+				A797769B2C95698C009DB4FA /* round_incoming_loud.mp3 */,
+				A797769F2C95699F009DB4FA /* archive_loud.mp3 */,
+				A797769E2C95699F009DB4FA /* archive_normal.mp3 */,
+				A797769A2C95698C009DB4FA /* round_incoming_normal.mp3 */,
+				A79776A22C9569C0009DB4FA /* blip_loud.mp3 */,
+				A79776962C9564DC009DB4FA /* blip_normal.mp3 */,
+				A79776922C956076009DB4FA /* prepare_beeps_mono.mp3 */,
+				A79776942C956138009DB4FA /* prepare_beeps_pan_trim.mp3 */,
+				A79776902C956046009DB4FA /* prepare_beeps_pan.mp3 */,
 			);
 			path = Sounds;
 			sourceTree = "<group>";
@@ -184,9 +208,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A7488E3C2C939A4400FBE632 /* prepare_beeps.mp3 in Resources */,
+				A79776A02C95699F009DB4FA /* archive_normal.mp3 in Resources */,
+				A79776932C956076009DB4FA /* prepare_beeps_mono.mp3 in Resources */,
+				A79776A32C9569C0009DB4FA /* blip_loud.mp3 in Resources */,
+				A79776952C956139009DB4FA /* prepare_beeps_pan_trim.mp3 in Resources */,
+				A797769C2C95698C009DB4FA /* round_incoming_normal.mp3 in Resources */,
+				A79776912C956046009DB4FA /* prepare_beeps_pan.mp3 in Resources */,
+				A797769D2C95698C009DB4FA /* round_incoming_loud.mp3 in Resources */,
 				A78D60562C86DA56009DC239 /* Preview Assets.xcassets in Resources */,
 				A78D60532C86DA56009DC239 /* Assets.xcassets in Resources */,
+				A79776972C9564DD009DB4FA /* blip_normal.mp3 in Resources */,
+				A79776A12C95699F009DB4FA /* archive_loud.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

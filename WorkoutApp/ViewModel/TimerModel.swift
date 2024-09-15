@@ -54,12 +54,21 @@ class TimerModel: NSObject, ObservableObject, UNUserNotificationCenterDelegate {
     }
     
     func startTimer() {
-        isStarted = true
-        isPaused = false
-        stopwatch.isPaused = false
-        addNewTimer = false
         prepareTimer()
-        stopwatch.start()
+        if isAlertSoundOn {
+            SoundManager.instance.playPrepareBeeps()
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) { 
+            self.isStarted = true
+            self.stopwatch.isPaused = false
+            self.stopwatch.start()
+            self.isPaused = false
+            self.addNewTimer = false
+            if self.isAlertSoundOn {
+                SoundManager.instance.playArchive()
+            }
+        }
+        
         // TODO: Add notifications and handle app in background edge cases.
         // addNotification()
     }
@@ -89,13 +98,11 @@ class TimerModel: NSObject, ObservableObject, UNUserNotificationCenterDelegate {
     func updateTimer() {
         timeLeft -= 1
         
-        if isAlertSoundOn && timeLeft == 3 {
+        if isAlertSoundOn && (timeLeft == 1 || timeLeft == 2 || timeLeft == 3) {
+            SoundManager.instance.playBlip()
+        } else if isAlertSoundOn && timeLeft == 10 {
             SoundManager.instance.playPrepareBeeps()
-        }
-        if timeLeft == 0 {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                SoundManager.instance.stopSound()
-            }
+        } else if timeLeft == 0 {
             if currentSet >= numberOfSets {
                 isStarted = false
                 isFinished = true
@@ -103,6 +110,9 @@ class TimerModel: NSObject, ObservableObject, UNUserNotificationCenterDelegate {
                 timeLeft = secondsPerSet
                 updateTimerStringValue()
                 currentSet += 1
+                if isAlertSoundOn {
+                    SoundManager.instance.playArchive()
+                }
             }
         }
         setHMS(seconds: timeLeft)

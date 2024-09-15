@@ -8,17 +8,20 @@ import AVFoundation
 
 class SoundManager: NSObject, AVAudioPlayerDelegate {
     static let instance = SoundManager()
-    
+     
     private var audioPlayer: AVAudioPlayer?
-    private let BEEP: String = "prepare_beeps"
+    private let BEEP: String = "prepare_beeps_pan_trim"
+    private let BLIP: String = "blip_normal"
+    private let BLIP_LOUD: String = "blip_loud"
+    private let ARCHIVE: String = "archive_normal"
+    private let ARCHIVE_LOUD: String = "archive_loud"
+    private let ROUND_INCOMING: String = "round_incoming_normal"
+    private let ROUND_INCOMING_LOUD: String = "round_incoming_loud"
+    
     
     private override init() {
         super.init() // Call the NSObject initializer
         prepareAudioSession()
-        preloadSound(soundName: BEEP) { [weak self] in
-            // Stop the sound after it has been prepared
-            self?.stopSound()
-        }
     }
     
     // Prepare the audio session in advance
@@ -78,6 +81,21 @@ class SoundManager: NSObject, AVAudioPlayerDelegate {
     // Play the prepare beeps (using preloaded sound)
     func playPrepareBeeps() {
         playSound(soundName: BEEP)
+    }
+    
+    func playBlip(loud: Bool = false) {
+        if loud { playSound(soundName: BLIP_LOUD) }
+        else { playSound(soundName: BLIP) }
+    }
+    
+    func playArchive(loud: Bool = false) {
+        if loud { playSound(soundName: ARCHIVE_LOUD) }
+        else { playSound(soundName: ARCHIVE) }
+    }
+    
+    func playRoundIncoming(loud: Bool = false) {
+        if loud { playSound(soundName: ROUND_INCOMING_LOUD) }
+        else { playSound(soundName: ROUND_INCOMING) }
     }
     
     // Play the prepare beeps (using preloaded sound)
