@@ -17,7 +17,9 @@ class SoundManager: NSObject, AVAudioPlayerDelegate {
     private let ARCHIVE_LOUD: String = "archive_loud"
     private let ROUND_INCOMING: String = "round_incoming_normal"
     private let ROUND_INCOMING_LOUD: String = "round_incoming_loud"
-    
+    private let NEW_ROUND: String = "new_round_normal"
+    private let NEW_ROUND_LOUD: String = "new_round_loud"
+        
     
     private override init() {
         super.init() // Call the NSObject initializer
@@ -88,7 +90,7 @@ class SoundManager: NSObject, AVAudioPlayerDelegate {
         else { playSound(soundName: BLIP) }
     }
     
-    func playArchive(loud: Bool = false) {
+    func playStartTimer(loud: Bool = false) {
         if loud { playSound(soundName: ARCHIVE_LOUD) }
         else { playSound(soundName: ARCHIVE) }
     }
@@ -96,6 +98,11 @@ class SoundManager: NSObject, AVAudioPlayerDelegate {
     func playRoundIncoming(loud: Bool = false) {
         if loud { playSound(soundName: ROUND_INCOMING_LOUD) }
         else { playSound(soundName: ROUND_INCOMING) }
+    }
+    
+    func playNewRound(loud: Bool = false) {
+        if loud { playSound(soundName: NEW_ROUND_LOUD) }
+        else { playSound(soundName: NEW_ROUND) }
     }
     
     // Play the prepare beeps (using preloaded sound)

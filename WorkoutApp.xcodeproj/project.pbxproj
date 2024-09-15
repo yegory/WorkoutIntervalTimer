@@ -28,6 +28,8 @@
 		A79776A12C95699F009DB4FA /* archive_loud.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A797769F2C95699F009DB4FA /* archive_loud.mp3 */; };
 		A79776A32C9569C0009DB4FA /* blip_loud.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A79776A22C9569C0009DB4FA /* blip_loud.mp3 */; };
 		A7B13BAC2C87EC8600CF52A6 /* TimePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B13BAB2C87EC8600CF52A6 /* TimePickerView.swift */; };
+		A7D66E932C96BDB70051362C /* new_round_normal.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A7D66E912C96BDB70051362C /* new_round_normal.mp3 */; };
+		A7D66E942C96BDB70051362C /* new_round_loud.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A7D66E922C96BDB70051362C /* new_round_loud.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +55,8 @@
 		A797769F2C95699F009DB4FA /* archive_loud.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = archive_loud.mp3; sourceTree = "<group>"; };
 		A79776A22C9569C0009DB4FA /* blip_loud.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = blip_loud.mp3; sourceTree = "<group>"; };
 		A7B13BAB2C87EC8600CF52A6 /* TimePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerView.swift; sourceTree = "<group>"; };
+		A7D66E912C96BDB70051362C /* new_round_normal.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = new_round_normal.mp3; sourceTree = "<group>"; };
+		A7D66E922C96BDB70051362C /* new_round_loud.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = new_round_loud.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +73,8 @@
 		A7488E3A2C939A2900FBE632 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				A7D66E922C96BDB70051362C /* new_round_loud.mp3 */,
+				A7D66E912C96BDB70051362C /* new_round_normal.mp3 */,
 				A797769B2C95698C009DB4FA /* round_incoming_loud.mp3 */,
 				A797769F2C95699F009DB4FA /* archive_loud.mp3 */,
 				A797769E2C95699F009DB4FA /* archive_normal.mp3 */,
@@ -210,8 +216,10 @@
 			files = (
 				A79776A02C95699F009DB4FA /* archive_normal.mp3 in Resources */,
 				A79776932C956076009DB4FA /* prepare_beeps_mono.mp3 in Resources */,
+				A7D66E942C96BDB70051362C /* new_round_loud.mp3 in Resources */,
 				A79776A32C9569C0009DB4FA /* blip_loud.mp3 in Resources */,
 				A79776952C956139009DB4FA /* prepare_beeps_pan_trim.mp3 in Resources */,
+				A7D66E932C96BDB70051362C /* new_round_normal.mp3 in Resources */,
 				A797769C2C95698C009DB4FA /* round_incoming_normal.mp3 in Resources */,
 				A79776912C956046009DB4FA /* prepare_beeps_pan.mp3 in Resources */,
 				A797769D2C95698C009DB4FA /* round_incoming_loud.mp3 in Resources */,
@@ -378,8 +386,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -407,8 +415,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

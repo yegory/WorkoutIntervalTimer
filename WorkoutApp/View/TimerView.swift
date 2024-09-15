@@ -24,6 +24,7 @@ struct TimerView: View {
                     .foregroundColor(.gray)
                     .opacity(timerModel.stopwatch.isPaused ? 0.7 : 1.0)  // Lower opacity when paused
             }
+            
             Spacer()
             
             // Timer Countdown with conditional opacity
@@ -32,18 +33,38 @@ struct TimerView: View {
                 .padding()
                 .foregroundColor(timerModel.isPaused ? .gray : .white)  // Dimmed color when paused
                 .opacity(timerModel.isPaused ? 0.6 : 1.0)  // Lower opacity when paused
+            
+            // set progress + progress bar
+            ZStack(alignment: .leading) {
+                // Background rectangle (Violet)
+                RoundedRectangle(cornerRadius: 10)
+                    .fill(Color("DarkVioletAsset"))
+                    .frame(width: 300, height: 55)
 
-            // Current Set if more than 1 set
-            if timerModel.numberOfSets > 1 {
+                // Foreground rectangle (Brighter violet, fills based on progress)
+                RoundedRectangle(cornerRadius: 10)
+                    .fill(
+                        LinearGradient(
+                            gradient: Gradient(colors: [Color("VioletAsset"), Color("BrightVioletAsset")]),
+                            startPoint: .leading,
+                            endPoint: .trailing
+                        )
+                    )
+                    .frame(width: CGFloat(300 * timerModel.progress), height: 55)
+                    .animation(.linear(duration: 1.0), value: timerModel.progress)
+                    
+                // Text center of bar
                 Text("\(timerModel.currentSet)/\(timerModel.numberOfSets)")
                     .font(.system(size: 40, weight: .semibold))
-                    .foregroundColor(.gray)
+                    .foregroundColor(.init(white: 0.7))
+                    .shadow(color: Color("DarkVioletAsset"), radius: 4, x: 0, y: 2)
+                    .frame(width: 300, height: 55, alignment: .center)
             }
              
             Spacer()
             
             // HStack for both play/pause and stopwatch buttons
-            HStack(spacing: 20) {
+            HStack(spacing: 30) {
                 // Start/Stop Button
                 Button {
                     if timerModel.isStarted && !timerModel.isPaused {
@@ -63,13 +84,14 @@ struct TimerView: View {
                                     (!timerModel.isStarted || timerModel.isPaused ? "play.fill" : "stop.fill"))
                         .font(.largeTitle.bold())
                         .foregroundStyle(.white)
-                        .frame(width: 80, height: 80)
+                        .frame(width: 90, height: 90)
                         .background {
                             Circle()
-                                .fill(Color("PurpleAsset"))
+                                .fill(Color("TealAsset"))
                         }
-                        .shadow(color: Color("PurpleAsset"), radius: 8, x: 0, y: 0)
-                        .opacity(timerModel.isStarted && !timerModel.isPaused ? 0.5 : 1.0)  // Dim play button when running
+                        .shadow(color: Color("BlueAsset"), radius: 15, x: 0, y: 0)
+                        // Dim play button when running
+                        .opacity(timerModel.isStarted && !timerModel.isPaused ? 0.6 : 1.0)
                 }
                 
                 // Stopwatch Button
@@ -79,13 +101,14 @@ struct TimerView: View {
                     Image(systemName: "timer")
                         .font(.largeTitle.bold())
                         .foregroundStyle(.white)
-                        .frame(width: 80, height: 80)
+                        .frame(width: 90, height: 90)
                         .background {
                             Circle()
-                                .fill(Color("PurpleAsset"))
+                                .fill(Color("BlueAsset"))
                         }
-                        .shadow(color: Color("PurpleAsset"), radius: 8, x: 0, y: 0)
-                        .opacity(!timerModel.stopwatch.isPaused ? 0.5 : 1.0)  // Dim play button when running
+                        .shadow(color: Color("TealAsset"), radius: 15, x: 0, y: 0)
+                        // Dim play button when running
+                        .opacity(!timerModel.stopwatch.isPaused ? 0.6 : 1.0)
                 }
             }
             
@@ -116,7 +139,7 @@ extension TimerModel {
             self.numberOfSets = 30
             self.currentSet = 16
             self.stopwatch = Stopwatch() // Ensure Stopwatch is properly initialized
-            self.timerStringValue = "00:01:13"  // Example time for the preview
+            self.timerStringValue = "01:13"  // Example time for the preview
         }
     }
 }

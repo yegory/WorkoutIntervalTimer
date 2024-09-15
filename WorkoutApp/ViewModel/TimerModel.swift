@@ -16,6 +16,7 @@ class TimerModel: NSObject, ObservableObject, UNUserNotificationCenterDelegate {
     @Published var numberOfSets: Int = 1
     @Published var currentSet: Int = 1
     @Published var isAlertSoundOn: Bool = true
+    @Published var isLoud: Bool = false
     
     // Time Handling
     @Published var hours: Int = 0
@@ -24,6 +25,7 @@ class TimerModel: NSObject, ObservableObject, UNUserNotificationCenterDelegate {
     @Published var timeLeft: Int = 0
     @Published var secondsPerSet: Int = 0
     @Published var timerStringValue: String = "00:00"
+    @Published var progress: CGFloat = 0
     
     @Published var stopwatch: Stopwatch = .init()
     private let instance = SoundManager.instance
@@ -56,7 +58,7 @@ class TimerModel: NSObject, ObservableObject, UNUserNotificationCenterDelegate {
     func startTimer() {
         prepareTimer()
         if isAlertSoundOn {
-            SoundManager.instance.playPrepareBeeps()
+            SoundManager.instance.playStartTimer(loud: isLoud)
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) { 
             self.isStarted = true
@@ -65,7 +67,7 @@ class TimerModel: NSObject, ObservableObject, UNUserNotificationCenterDelegate {
             self.isPaused = false
             self.addNewTimer = false
             if self.isAlertSoundOn {
-                SoundManager.instance.playArchive()
+                SoundManager.instance.playNewRound(loud: self.isLoud)
             }
         }
         
@@ -92,16 +94,18 @@ class TimerModel: NSObject, ObservableObject, UNUserNotificationCenterDelegate {
         timeLeft = secondsPerSet
         updateTimerStringValue()
         currentSet = 1
+        progress = 0
         stopwatch.reset()
     }
     
     func updateTimer() {
         timeLeft -= 1
-        
+        progress = 1 - CGFloat(timeLeft) / CGFloat(secondsPerSet)
+
         if isAlertSoundOn && (timeLeft == 1 || timeLeft == 2 || timeLeft == 3) {
             SoundManager.instance.playBlip()
         } else if isAlertSoundOn && timeLeft == 10 {
-            SoundManager.instance.playPrepareBeeps()
+            SoundManager.instance.playRoundIncoming(loud: isLoud)
         } else if timeLeft == 0 {
             if currentSet >= numberOfSets {
                 isStarted = false
@@ -110,8 +114,9 @@ class TimerModel: NSObject, ObservableObject, UNUserNotificationCenterDelegate {
                 timeLeft = secondsPerSet
                 updateTimerStringValue()
                 currentSet += 1
+                progress = 0
                 if isAlertSoundOn {
-                    SoundManager.instance.playArchive()
+                    SoundManager.instance.playNewRound(loud: isLoud)
                 }
             }
         }
