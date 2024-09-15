@@ -16,7 +16,6 @@ class TimerModel: NSObject, ObservableObject, UNUserNotificationCenterDelegate {
     @Published var numberOfSets: Int = 1
     @Published var currentSet: Int = 1
     @Published var isAlertSoundOn: Bool = true
-    @Published var isLoud: Bool = false
     
     // Time Handling
     @Published var hours: Int = 0
@@ -28,15 +27,16 @@ class TimerModel: NSObject, ObservableObject, UNUserNotificationCenterDelegate {
     @Published var progress: CGFloat = 0
     
     @Published var stopwatch: Stopwatch = .init()
-    private let instance = SoundManager.instance
+    
+    private var timerDispatchWorkItem: DispatchWorkItem?
     
     // Default initializer
     override init() {
         super.init()
         self.authorizeNotification()
-        
+         
         // Preload sounds here during initialization
-        instance.preloadPrepareBeeps()
+        SoundManager.instance.preloadPrepareBeeps()
     }
     
     func updateTimerStringValue() {
@@ -58,21 +58,30 @@ class TimerModel: NSObject, ObservableObject, UNUserNotificationCenterDelegate {
     func startTimer() {
         prepareTimer()
         if isAlertSoundOn {
-            SoundManager.instance.playStartTimer(loud: isLoud)
+            SoundManager.instance.playStartFinishTimer()
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) { 
+
+        // Create a dispatch work item for delayed execution
+        timerDispatchWorkItem = DispatchWorkItem {
             self.isStarted = true
             self.stopwatch.isPaused = false
             self.stopwatch.start()
             self.isPaused = false
             self.addNewTimer = false
             if self.isAlertSoundOn {
-                SoundManager.instance.playNewRound(loud: self.isLoud)
+                SoundManager.instance.playNewRound()
             }
         }
-        
+
+        // Delay timer start by 3 seconds
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0, execute: timerDispatchWorkItem!)
+
         // TODO: Add notifications and handle app in background edge cases.
-        // addNotification()
+    }
+
+    // Cancels the start if app goes into background
+    func cancelPendingTimerStart() {
+        timerDispatchWorkItem?.cancel()
     }
     
     func pauseTimer() {
@@ -105,18 +114,21 @@ class TimerModel: NSObject, ObservableObject, UNUserNotificationCenterDelegate {
         if isAlertSoundOn && (timeLeft == 1 || timeLeft == 2 || timeLeft == 3) {
             SoundManager.instance.playBlip()
         } else if isAlertSoundOn && timeLeft == 10 {
-            SoundManager.instance.playRoundIncoming(loud: isLoud)
+            SoundManager.instance.playRoundIncoming()
         } else if timeLeft == 0 {
             if currentSet >= numberOfSets {
                 isStarted = false
                 isFinished = true
+                if isAlertSoundOn {
+                    SoundManager.instance.playStartFinishTimer()
+                }
             } else {
                 timeLeft = secondsPerSet
                 updateTimerStringValue()
                 currentSet += 1
                 progress = 0
                 if isAlertSoundOn {
-                    SoundManager.instance.playNewRound(loud: isLoud)
+                    SoundManager.instance.playNewRound()
                 }
             }
         }

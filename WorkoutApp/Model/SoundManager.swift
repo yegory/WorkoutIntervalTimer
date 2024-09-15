@@ -8,36 +8,32 @@ import AVFoundation
 
 class SoundManager: NSObject, AVAudioPlayerDelegate {
     static let instance = SoundManager()
-     
+    
     private var audioPlayer: AVAudioPlayer?
-    private let BEEP: String = "prepare_beeps_pan_trim"
-    private let BLIP: String = "blip_normal"
-    private let BLIP_LOUD: String = "blip_loud"
-    private let ARCHIVE: String = "archive_normal"
-    private let ARCHIVE_LOUD: String = "archive_loud"
-    private let ROUND_INCOMING: String = "round_incoming_normal"
-    private let ROUND_INCOMING_LOUD: String = "round_incoming_loud"
-    private let NEW_ROUND: String = "new_round_normal"
-    private let NEW_ROUND_LOUD: String = "new_round_loud"
-        
+    private let soundFiles: [String: (normal: String, loud: String)] = [
+        "BEEP": ("prepare_beeps_pan_trim", "prepare_beeps_pan_trim"),
+        "BLIP": ("blip_normal", "blip_loud"),
+        "ARCHIVE": ("archive_normal", "archive_loud"),
+        "ROUND_INCOMING": ("round_incoming_normal", "round_incoming_loud"),
+        "NEW_ROUND": ("xylophone_normal", "xylophone_loud")
+    ]
+    
+    public var isLoud: Bool = false
     
     private override init() {
         super.init() // Call the NSObject initializer
         prepareAudioSession()
     }
     
-    // Prepare the audio session in advance
     private func prepareAudioSession() {
         do {
-            // Prepare the audio session with duckOthers so other audio doesn't interrupt
-            try AVAudioSession.sharedInstance().setCategory(.playback, options: [.duckOthers])
+            try AVAudioSession.sharedInstance().setCategory(.playback, options: [.mixWithOthers])
             try AVAudioSession.sharedInstance().setActive(true)
         } catch {
             print("Failed to prepare audio session: \(error.localizedDescription)")
         }
     }
     
-    // Preload the sound so it doesn't cause delays on the first play
     private func preloadSound(soundName: String, soundExtension: String = "mp3", completion: @escaping () -> Void) {
         DispatchQueue.global(qos: .background).async {
             guard let url = Bundle.main.url(forResource: soundName, withExtension: soundExtension) else {
@@ -47,9 +43,9 @@ class SoundManager: NSObject, AVAudioPlayerDelegate {
             
             do {
                 self.audioPlayer = try AVAudioPlayer(contentsOf: url)
-                self.audioPlayer?.prepareToPlay() // Preload and prepare the player
+                self.audioPlayer?.prepareToPlay()
                 DispatchQueue.main.async {
-                    completion() // Call the completion handler after preparation
+                    completion()
                 }
             } catch {
                 print("Failed to preload sound: \(error.localizedDescription)")
@@ -57,13 +53,18 @@ class SoundManager: NSObject, AVAudioPlayerDelegate {
         }
     }
     
-    // Play a preloaded sound (ensures there's no delay when the sound starts)
-    func playSound(soundName: String, soundExtension: String = "mp3") {
+    func playSound(forKey key: String, soundExtension: String = "mp3") {
+        guard let soundFile = soundFiles[key] else {
+            print("Sound key not found: \(key)")
+            return
+        }
+        
+        let soundName = isLoud ? soundFile.loud : soundFile.normal
+        
         DispatchQueue.global(qos: .userInitiated).async {
             if let player = self.audioPlayer, player.url?.lastPathComponent == "\(soundName).\(soundExtension)" {
-                player.play() // Play the preloaded sound
+                player.play()
             } else {
-                // If not preloaded, load and play sound
                 guard let url = Bundle.main.url(forResource: soundName, withExtension: soundExtension) else {
                     print("Sound file not found: \(soundName).\(soundExtension)")
                     return
@@ -80,46 +81,38 @@ class SoundManager: NSObject, AVAudioPlayerDelegate {
         }
     }
     
-    // Play the prepare beeps (using preloaded sound)
+    // Play specific sounds using the new `playSound` method
     func playPrepareBeeps() {
-        playSound(soundName: BEEP)
+        playSound(forKey: "BEEP")
     }
     
-    func playBlip(loud: Bool = false) {
-        if loud { playSound(soundName: BLIP_LOUD) }
-        else { playSound(soundName: BLIP) }
+    func playBlip() {
+        playSound(forKey: "BLIP")
     }
     
-    func playStartTimer(loud: Bool = false) {
-        if loud { playSound(soundName: ARCHIVE_LOUD) }
-        else { playSound(soundName: ARCHIVE) }
+    func playStartFinishTimer() {
+        playSound(forKey: "ARCHIVE")
     }
     
-    func playRoundIncoming(loud: Bool = false) {
-        if loud { playSound(soundName: ROUND_INCOMING_LOUD) }
-        else { playSound(soundName: ROUND_INCOMING) }
+    func playRoundIncoming() {
+        playSound(forKey: "ROUND_INCOMING")
     }
     
-    func playNewRound(loud: Bool = false) {
-        if loud { playSound(soundName: NEW_ROUND_LOUD) }
-        else { playSound(soundName: NEW_ROUND) }
+    func playNewRound() {
+        playSound(forKey: "NEW_ROUND")
     }
     
-    // Play the prepare beeps (using preloaded sound)
     func preloadPrepareBeeps() {
-        preloadSound(soundName: BEEP) { [weak self] in
-            // Stop the sound after it has been prepared
+        preloadSound(soundName: soundFiles["BEEP"]!.normal) { [weak self] in
             self?.stopSound()
         }
     }
     
-    // Stop playing the current sound
     func stopSound() {
         audioPlayer?.stop()
         deactivateAudioSession()
     }
     
-    // Deactivate audio session when done
     private func deactivateAudioSession() {
         do {
             try AVAudioSession.sharedInstance().setActive(false, options: [.notifyOthersOnDeactivation])
@@ -128,8 +121,7 @@ class SoundManager: NSObject, AVAudioPlayerDelegate {
         }
     }
     
-    // AVAudioPlayerDelegate method to detect when the sound finishes playing
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
-        deactivateAudioSession() // Restore the audio session when playback finishes
+        deactivateAudioSession()
     }
 }

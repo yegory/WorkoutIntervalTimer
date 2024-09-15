@@ -27,9 +27,9 @@
 		A79776A02C95699F009DB4FA /* archive_normal.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A797769E2C95699F009DB4FA /* archive_normal.mp3 */; };
 		A79776A12C95699F009DB4FA /* archive_loud.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A797769F2C95699F009DB4FA /* archive_loud.mp3 */; };
 		A79776A32C9569C0009DB4FA /* blip_loud.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A79776A22C9569C0009DB4FA /* blip_loud.mp3 */; };
+		A7A76E3B2C9797A5007FC830 /* xylophone_normal.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A7A76E392C9797A4007FC830 /* xylophone_normal.mp3 */; };
+		A7A76E3C2C9797A5007FC830 /* xylophone_loud.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A7A76E3A2C9797A4007FC830 /* xylophone_loud.mp3 */; };
 		A7B13BAC2C87EC8600CF52A6 /* TimePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B13BAB2C87EC8600CF52A6 /* TimePickerView.swift */; };
-		A7D66E932C96BDB70051362C /* new_round_normal.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A7D66E912C96BDB70051362C /* new_round_normal.mp3 */; };
-		A7D66E942C96BDB70051362C /* new_round_loud.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A7D66E922C96BDB70051362C /* new_round_loud.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,9 +54,9 @@
 		A797769E2C95699F009DB4FA /* archive_normal.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = archive_normal.mp3; sourceTree = "<group>"; };
 		A797769F2C95699F009DB4FA /* archive_loud.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = archive_loud.mp3; sourceTree = "<group>"; };
 		A79776A22C9569C0009DB4FA /* blip_loud.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = blip_loud.mp3; sourceTree = "<group>"; };
+		A7A76E392C9797A4007FC830 /* xylophone_normal.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = xylophone_normal.mp3; sourceTree = "<group>"; };
+		A7A76E3A2C9797A4007FC830 /* xylophone_loud.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = xylophone_loud.mp3; sourceTree = "<group>"; };
 		A7B13BAB2C87EC8600CF52A6 /* TimePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerView.swift; sourceTree = "<group>"; };
-		A7D66E912C96BDB70051362C /* new_round_normal.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = new_round_normal.mp3; sourceTree = "<group>"; };
-		A7D66E922C96BDB70051362C /* new_round_loud.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = new_round_loud.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,8 +73,8 @@
 		A7488E3A2C939A2900FBE632 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
-				A7D66E922C96BDB70051362C /* new_round_loud.mp3 */,
-				A7D66E912C96BDB70051362C /* new_round_normal.mp3 */,
+				A7A76E3A2C9797A4007FC830 /* xylophone_loud.mp3 */,
+				A7A76E392C9797A4007FC830 /* xylophone_normal.mp3 */,
 				A797769B2C95698C009DB4FA /* round_incoming_loud.mp3 */,
 				A797769F2C95699F009DB4FA /* archive_loud.mp3 */,
 				A797769E2C95699F009DB4FA /* archive_normal.mp3 */,
@@ -214,15 +214,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7A76E3B2C9797A5007FC830 /* xylophone_normal.mp3 in Resources */,
 				A79776A02C95699F009DB4FA /* archive_normal.mp3 in Resources */,
 				A79776932C956076009DB4FA /* prepare_beeps_mono.mp3 in Resources */,
-				A7D66E942C96BDB70051362C /* new_round_loud.mp3 in Resources */,
 				A79776A32C9569C0009DB4FA /* blip_loud.mp3 in Resources */,
 				A79776952C956139009DB4FA /* prepare_beeps_pan_trim.mp3 in Resources */,
-				A7D66E932C96BDB70051362C /* new_round_normal.mp3 in Resources */,
 				A797769C2C95698C009DB4FA /* round_incoming_normal.mp3 in Resources */,
 				A79776912C956046009DB4FA /* prepare_beeps_pan.mp3 in Resources */,
 				A797769D2C95698C009DB4FA /* round_incoming_loud.mp3 in Resources */,
+				A7A76E3C2C9797A5007FC830 /* xylophone_loud.mp3 in Resources */,
 				A78D60562C86DA56009DC239 /* Preview Assets.xcassets in Resources */,
 				A78D60532C86DA56009DC239 /* Assets.xcassets in Resources */,
 				A79776972C9564DD009DB4FA /* blip_normal.mp3 in Resources */,
