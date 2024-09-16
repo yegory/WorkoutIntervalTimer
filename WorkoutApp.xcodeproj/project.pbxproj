@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		A77053812C92443400A3EA7F /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77053802C92443400A3EA7F /* SoundManager.swift */; };
-		A77053832C924D4F00A3EA7F /* TimerHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77053822C924D4F00A3EA7F /* TimerHandler.swift */; };
 		A77053852C924E7900A3EA7F /* Stopwatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77053842C924E7900A3EA7F /* Stopwatch.swift */; };
 		A77053872C9287EC00A3EA7F /* TimerSetUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77053862C9287EC00A3EA7F /* TimerSetUpView.swift */; };
 		A77053892C9291B700A3EA7F /* NumbersOnlyViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77053882C9291B700A3EA7F /* NumbersOnlyViewModifier.swift */; };
@@ -34,7 +33,6 @@
 
 /* Begin PBXFileReference section */
 		A77053802C92443400A3EA7F /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
-		A77053822C924D4F00A3EA7F /* TimerHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TimerHandler.swift; path = WorkoutApp/Model/TimerHandler.swift; sourceTree = SOURCE_ROOT; };
 		A77053842C924E7900A3EA7F /* Stopwatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stopwatch.swift; sourceTree = "<group>"; };
 		A77053862C9287EC00A3EA7F /* TimerSetUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerSetUpView.swift; sourceTree = "<group>"; };
 		A77053882C9291B700A3EA7F /* NumbersOnlyViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumbersOnlyViewModifier.swift; sourceTree = "<group>"; };
@@ -93,7 +91,6 @@
 			children = (
 				A77053802C92443400A3EA7F /* SoundManager.swift */,
 				A77053882C9291B700A3EA7F /* NumbersOnlyViewModifier.swift */,
-				A77053822C924D4F00A3EA7F /* TimerHandler.swift */,
 				A77053842C924E7900A3EA7F /* Stopwatch.swift */,
 			);
 			path = Model;
@@ -245,7 +242,6 @@
 				A78D60612C86DBD4009DC239 /* TimerView.swift in Sources */,
 				A78D604F2C86DA54009DC239 /* WorkoutApp.swift in Sources */,
 				A77053812C92443400A3EA7F /* SoundManager.swift in Sources */,
-				A77053832C924D4F00A3EA7F /* TimerHandler.swift in Sources */,
 				A77053852C924E7900A3EA7F /* Stopwatch.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
