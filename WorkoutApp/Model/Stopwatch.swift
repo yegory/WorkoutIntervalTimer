@@ -8,20 +8,33 @@
 import Foundation
 
 class Stopwatch: ObservableObject {
-    @Published var elapsedTime: Int = 0
     private var timer: Timer?
+    
     @Published var isPaused: Bool = true
+    // This one only updates when user leaves and opens app again (app phases)
+    @Published var elapsedTimeStatic: TimeInterval = 0
+    @Published var elapsedTime: TimeInterval = 0
+    @Published var mostRecentStartDate: Date = Date()
+    
+    /// Scenarios:
+    ///  1. User starts timer.
+    ///  2. Leaves app
+    ///  3. We add now() - mostRecentStartDate to elapsedTimeStatic and set ElapsedTime to static
+    ///  4. We make most recent start date = now()
     
     // Computed property to display time in "hh:mm:ss" format
     var displayTime: String {
-        let hours = elapsedTime / 3600
-        let minutes = (elapsedTime % 3600) / 60
-        let seconds = elapsedTime % 60
-        return String(format: "%02d:%02d:%02d", hours, minutes, seconds)
+        let time = Int(elapsedTime)
+        let hours = time / 3600
+        let minutes = (time % 3600) / 60
+        let seconds = time % 60
+        // Return a string where hours are not displayed if h=0
+        return "\(hours == 0 ? "" : "\(hours):")\(minutes >= 10 ? "\(minutes)" : "0\(minutes)"):\(seconds >= 10 ? "\(seconds)" : "0\(seconds)")"
     }
     
     func start() {
         if timer == nil {
+            mostRecentStartDate = Date()
             timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
                 guard let self = self else { return }
                 self.elapsedTime += 1

@@ -30,14 +30,14 @@ class SoundManager: NSObject, AVAudioPlayerDelegate {
             try AVAudioSession.sharedInstance().setCategory(.playback, options: [.mixWithOthers])
             try AVAudioSession.sharedInstance().setActive(true)
         } catch {
-            print("Failed to prepare audio session: \(error.localizedDescription)")
+//            print("Failed to prepare audio session: \(error.localizedDescription)")
         }
     }
     
     private func preloadSound(soundName: String, soundExtension: String = "mp3", completion: @escaping () -> Void) {
         DispatchQueue.global(qos: .background).async {
             guard let url = Bundle.main.url(forResource: soundName, withExtension: soundExtension) else {
-                print("Sound file not found for preloading: \(soundName).\(soundExtension)")
+//                print("Sound file not found for preloading: \(soundName).\(soundExtension)")
                 return
             }
             
@@ -48,14 +48,14 @@ class SoundManager: NSObject, AVAudioPlayerDelegate {
                     completion()
                 }
             } catch {
-                print("Failed to preload sound: \(error.localizedDescription)")
+//                print("Failed to preload sound: \(error.localizedDescription)")
             }
         }
     }
     
     func playSound(forKey key: String, soundExtension: String = "mp3") {
         guard let soundFile = soundFiles[key] else {
-            print("Sound key not found: \(key)")
+//            print("Sound key not found: \(key)")
             return
         }
         
@@ -66,7 +66,7 @@ class SoundManager: NSObject, AVAudioPlayerDelegate {
                 player.play()
             } else {
                 guard let url = Bundle.main.url(forResource: soundName, withExtension: soundExtension) else {
-                    print("Sound file not found: \(soundName).\(soundExtension)")
+//                    print("Sound file not found: \(soundName).\(soundExtension)")
                     return
                 }
                 
@@ -75,7 +75,7 @@ class SoundManager: NSObject, AVAudioPlayerDelegate {
                     self.audioPlayer?.delegate = self
                     self.audioPlayer?.play()
                 } catch {
-                    print("Failed to play sound: \(error.localizedDescription)")
+//                    print("Failed to play sound: \(error.localizedDescription)")
                 }
             }
         }
@@ -117,7 +117,7 @@ class SoundManager: NSObject, AVAudioPlayerDelegate {
         do {
             try AVAudioSession.sharedInstance().setActive(false, options: [.notifyOthersOnDeactivation])
         } catch {
-            print("Failed to deactivate audio session: \(error.localizedDescription)")
+//            print("Failed to deactivate audio session: \(error.localizedDescription)")
         }
     }
     

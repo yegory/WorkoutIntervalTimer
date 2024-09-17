@@ -29,7 +29,7 @@ struct TimerView: View {
             
             // Timer Countdown with conditional opacity
             Text(timerModel.timerStringValue)
-                .font(.system(size: timerModel.hours > 0 ? 120 : 90, weight: .semibold))
+                .font(.system(size: timerModel.hours == 0 ? 120 : (timerModel.hours < 10 ? 95 : 85), weight: .semibold))
                 .padding()
                 .foregroundColor(timerModel.isPaused ? .gray : .white)  // Dimmed color when paused
                 .opacity(timerModel.isPaused ? 0.6 : 1.0)  // Lower opacity when paused
@@ -125,11 +125,11 @@ struct TimerView: View {
     }
 }
 
-
 #Preview {
     TimerView()
         .environmentObject(TimerModel(dummyInitialization: true))
 }
+
 // Dummy TimerModel class for preview
 extension TimerModel {
     convenience init(dummyInitialization: Bool) {

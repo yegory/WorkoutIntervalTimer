@@ -27,8 +27,11 @@ class TimerModel: NSObject, ObservableObject, UNUserNotificationCenterDelegate {
     @Published var progress: CGFloat = 0
     
     @Published var stopwatch: Stopwatch = .init()
+    @Published var startTime: Date = Date()
     
     private var timerDispatchWorkItem: DispatchWorkItem?
+    
+    
     
     // Default initializer
     override init() {
@@ -57,24 +60,25 @@ class TimerModel: NSObject, ObservableObject, UNUserNotificationCenterDelegate {
     
     func startTimer() {
         prepareTimer()
-        if isAlertSoundOn {
-            SoundManager.instance.playStartFinishTimer()
-        }
+//        if isAlertSoundOn {
+//            SoundManager.instance.playStartFinishTimer()
+//        }
 
         // Create a dispatch work item for delayed execution
-        timerDispatchWorkItem = DispatchWorkItem {
-            self.isStarted = true
-            self.stopwatch.isPaused = false
-            self.stopwatch.start()
-            self.isPaused = false
-            self.addNewTimer = false
-            if self.isAlertSoundOn {
-                SoundManager.instance.playNewRound()
-            }
+//        timerDispatchWorkItem = DispatchWorkItem {
+        self.isStarted = true
+        self.startTime = Date()
+        self.stopwatch.isPaused = false
+        self.stopwatch.start()
+        self.isPaused = false
+        self.addNewTimer = false
+        if self.isAlertSoundOn {
+            SoundManager.instance.playNewRound()
         }
+//        }
 
         // Delay timer start by 3 seconds
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0, execute: timerDispatchWorkItem!)
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0, execute: timerDispatchWorkItem!)
 
         // TODO: Add notifications and handle app in background edge cases.
     }
