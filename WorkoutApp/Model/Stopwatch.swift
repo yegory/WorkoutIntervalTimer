@@ -15,13 +15,7 @@ class Stopwatch: ObservableObject {
     @Published var elapsedTimeStatic: TimeInterval = 0
     @Published var elapsedTime: TimeInterval = 0
     @Published var mostRecentStartDate: Date = Date()
-    
-    /// Scenarios:
-    ///  1. User starts timer.
-    ///  2. Leaves app
-    ///  3. We add now() - mostRecentStartDate to elapsedTimeStatic and set ElapsedTime to static
-    ///  4. We make most recent start date = now()
-    
+        
     // Computed property to display time in "hh:mm:ss" format
     var displayTime: String {
         let time = Int(elapsedTime)
@@ -34,6 +28,7 @@ class Stopwatch: ObservableObject {
     
     func start() {
         if timer == nil {
+            isPaused = false
             mostRecentStartDate = Date()
             timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
                 guard let self = self else { return }

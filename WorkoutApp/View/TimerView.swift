@@ -5,15 +5,35 @@
 //  Created by Yegor Yeryomenko on 2024-09-02.
 //
 
-
 import SwiftUI
 
 struct TimerView: View {
     @EnvironmentObject var timerModel: TimerModel
     @State private var isPaused: Bool = true
-
+    @Environment(\.presentationMode) var presentationMode  // To dismiss the current view
+    
     var body: some View {
         VStack(spacing: 10) {
+            // HStack for the reset button on top left
+            HStack {
+                if timerModel.canChangeTimer {
+                    Button(action: {
+                        // Reset the TimerModel and go back to TimerSetUpView
+                        timerModel.reset()
+                        presentationMode.wrappedValue.dismiss()  // Dismiss the current view
+                    }) {
+                        HStack {
+                            Image(systemName: "arrow.backward")
+                            Text("Reset")
+                        }
+                        .foregroundColor(.white)
+                        .padding(.leading)
+                    }
+                }
+                Spacer()
+            }
+            .padding(.top, 20)
+
             Spacer()
             
             // Stopwatch if multiple sets
@@ -34,25 +54,12 @@ struct TimerView: View {
                 .foregroundColor(timerModel.isPaused ? .gray : .white)  // Dimmed color when paused
                 .opacity(timerModel.isPaused ? 0.6 : 1.0)  // Lower opacity when paused
             
-            // set progress + progress bar
-            ZStack(alignment: .leading) {
-                // Background rectangle (Violet)
-                RoundedRectangle(cornerRadius: 10)
-                    .fill(Color("DarkVioletAsset"))
-                    .frame(width: 300, height: 55)
-
-                // Foreground rectangle (Brighter violet, fills based on progress)
-                RoundedRectangle(cornerRadius: 10)
-                    .fill(
-                        LinearGradient(
-                            gradient: Gradient(colors: [Color("VioletAsset"), Color("BrightVioletAsset")]),
-                            startPoint: .leading,
-                            endPoint: .trailing
-                        )
-                    )
-                    .frame(width: CGFloat(300 * timerModel.progress), height: 55)
-                    .animation(.linear(duration: 1.0), value: timerModel.progress)
-                    
+            
+            // Set progress + progress bar
+            ZStack() {
+                ProgressBarView(percent: timerModel.progressPercent)
+                    .animation(.spring)
+                
                 // Text center of bar
                 Text("\(timerModel.currentSet)/\(timerModel.numberOfSets)")
                     .font(.system(size: 40, weight: .semibold))
@@ -76,8 +83,7 @@ struct TimerView: View {
                     } else if (timerModel.isStarted && timerModel.isPaused) {
                         timerModel.resumeTimer()
                     } else if (timerModel.isFinished) {
-                        timerModel.resetTimer()
-                        timerModel.startTimer()
+                        timerModel.restart()
                     }
                 } label: {
                     Image(systemName: timerModel.isFinished ? "repeat" :

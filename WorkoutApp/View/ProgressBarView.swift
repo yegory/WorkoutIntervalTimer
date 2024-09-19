@@ -8,8 +8,34 @@
 import SwiftUI
 
 struct ProgressBarView: View {
+    
+    var width: CGFloat = 300
+    var height: CGFloat = 50
+    var percent: CGFloat = 70
+    var backgroundColor = Color("DarkVioletAsset")
+    var colorFrom = Color("VioletAsset")
+    var colorTo = Color("BrightVioletAsset")
+    var multiplier: CGFloat {
+        width / 100
+    }
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack(alignment: .leading) {
+            RoundedRectangle(cornerRadius: height, style: .continuous)
+                .frame(width: width, height: height)
+                .foregroundColor(backgroundColor.opacity(0.85))
+            
+            RoundedRectangle(cornerRadius: height, style: .continuous)
+                .frame(width: percent * multiplier, height: height)
+                .background(
+                    LinearGradient(gradient: Gradient(colors: [colorFrom, colorTo]), 
+                                   startPoint: .leading,
+                                   endPoint: .trailing
+                                  )
+                        .clipShape(RoundedRectangle(cornerRadius: height, style: .continuous))
+                )
+                .foregroundColor(.clear)
+        }
     }
 }
 

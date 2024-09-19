@@ -17,6 +17,7 @@
 		A78D60562C86DA56009DC239 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A78D60552C86DA56009DC239 /* Preview Assets.xcassets */; };
 		A78D605F2C86DABA009DC239 /* TimerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78D605E2C86DABA009DC239 /* TimerModel.swift */; };
 		A78D60612C86DBD4009DC239 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78D60602C86DBD4009DC239 /* TimerView.swift */; };
+		A79381172C9CB86D00B7541A /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79381162C9CB86D00B7541A /* ProgressBarView.swift */; };
 		A79776912C956046009DB4FA /* prepare_beeps_pan.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A79776902C956046009DB4FA /* prepare_beeps_pan.mp3 */; };
 		A79776932C956076009DB4FA /* prepare_beeps_mono.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A79776922C956076009DB4FA /* prepare_beeps_mono.mp3 */; };
 		A79776952C956139009DB4FA /* prepare_beeps_pan_trim.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A79776942C956138009DB4FA /* prepare_beeps_pan_trim.mp3 */; };
@@ -43,6 +44,7 @@
 		A78D60552C86DA56009DC239 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A78D605E2C86DABA009DC239 /* TimerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerModel.swift; sourceTree = "<group>"; };
 		A78D60602C86DBD4009DC239 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
+		A79381162C9CB86D00B7541A /* ProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarView.swift; sourceTree = "<group>"; };
 		A79776902C956046009DB4FA /* prepare_beeps_pan.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = prepare_beeps_pan.mp3; sourceTree = "<group>"; };
 		A79776922C956076009DB4FA /* prepare_beeps_mono.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = prepare_beeps_mono.mp3; sourceTree = "<group>"; };
 		A79776942C956138009DB4FA /* prepare_beeps_pan_trim.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = prepare_beeps_pan_trim.mp3; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 				A78D60602C86DBD4009DC239 /* TimerView.swift */,
 				A7B13BAB2C87EC8600CF52A6 /* TimePickerView.swift */,
 				A77053862C9287EC00A3EA7F /* TimerSetUpView.swift */,
+				A79381162C9CB86D00B7541A /* ProgressBarView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -243,6 +246,7 @@
 				A78D604F2C86DA54009DC239 /* WorkoutApp.swift in Sources */,
 				A77053812C92443400A3EA7F /* SoundManager.swift in Sources */,
 				A77053852C924E7900A3EA7F /* Stopwatch.swift in Sources */,
+				A79381172C9CB86D00B7541A /* ProgressBarView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -389,7 +393,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.yegor.WorkoutApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yegor.WorkoutAppUnique19240;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -418,7 +422,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.yegor.WorkoutApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yegor.WorkoutAppUnique19240;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

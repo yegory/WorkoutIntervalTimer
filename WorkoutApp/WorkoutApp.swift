@@ -13,7 +13,7 @@ struct WorkoutApp: App {
     @StateObject var timerModel: TimerModel = .init()
     @Environment(\.scenePhase) var phase
     
-    private let taskIdentifier: String = "com.yegor.WorkoutApp.timerTask"
+    private let taskIdentifier: String = "com.yegor.WorkoutAppUnique19240.timerTask"
 
     var body: some Scene {
         WindowGroup {
