@@ -60,25 +60,25 @@ class TimerModel: NSObject, ObservableObject, UNUserNotificationCenterDelegate {
     
     func startTimer() {
         prepareTimer()
-//        if isAlertSoundOn {
-//            SoundManager.instance.playStartFinishTimer()
-//        }
+        if isAlertSoundOn {
+            SoundManager.instance.playStartFinishTimer()
+        }
 
         // Create a dispatch work item for delayed execution
-//        timerDispatchWorkItem = DispatchWorkItem {
-        self.isStarted = true
-        self.startTime = Date()
-        self.stopwatch.isPaused = false
-        self.stopwatch.start()
-        self.isPaused = false
-        self.addNewTimer = false
-        if self.isAlertSoundOn {
-            SoundManager.instance.playNewRound()
+        timerDispatchWorkItem = DispatchWorkItem {
+            self.isStarted = true
+            self.startTime = Date()
+            self.stopwatch.isPaused = false
+            self.stopwatch.start()
+            self.isPaused = false
+            self.addNewTimer = false
+            if self.isAlertSoundOn {
+                SoundManager.instance.playNewRound()
+            }
         }
-//        }
 
         // Delay timer start by 3 seconds
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0, execute: timerDispatchWorkItem!)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0, execute: timerDispatchWorkItem!)
 
         // TODO: Add notifications and handle app in background edge cases.
     }
@@ -164,5 +164,56 @@ class TimerModel: NSObject, ObservableObject, UNUserNotificationCenterDelegate {
 
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         completionHandler([.sound, .banner])
+    }
+}
+
+extension TimerModel {
+    func saveToUserDefaults() {
+        UserDefaults.standard.set(isStarted, forKey: "isStarted")
+        UserDefaults.standard.set(isFinished, forKey: "isFinished")
+        UserDefaults.standard.set(isPaused, forKey: "isPaused")
+        UserDefaults.standard.set(addNewTimer, forKey: "addNewTimer")
+        UserDefaults.standard.set(numberOfSets, forKey: "numberOfSets")
+        UserDefaults.standard.set(currentSet, forKey: "currentSet")
+        UserDefaults.standard.set(isAlertSoundOn, forKey: "isAlertSoundOn")
+        
+//        UserDefaults.standard.set(hours, forKey: "hours")
+//        UserDefaults.standard.set(minutes, forKey: "minutes")
+//        UserDefaults.standard.set(seconds, forKey: "seconds")
+        UserDefaults.standard.set(timeLeft, forKey: "timeLeft")
+        UserDefaults.standard.set(secondsPerSet, forKey: "secondsPerSet")
+//        UserDefaults.standard.set(timerStringValue, forKey: "timerStringValue")
+//        UserDefaults.standard.set(progress, forKey: "progress")
+        
+        UserDefaults.standard.set(stopwatch.elapsedTimeStatic, forKey: "stopwatchElapsedTimeStatic")
+        UserDefaults.standard.set(stopwatch.elapsedTime, forKey: "stopwatchElapsedTime")
+        UserDefaults.standard.set(stopwatch.isPaused, forKey: "stopwatchIsPaused")
+        UserDefaults.standard.set(stopwatch.mostRecentStartDate, forKey: "stopwatchMostRecentStartDate")
+
+    }
+}
+
+extension TimerModel {
+    func restoreFromUserDefaults() {
+        self.isStarted = UserDefaults.standard.bool(forKey: "isStarted")
+        self.isFinished = UserDefaults.standard.bool(forKey: "isFinished")
+        self.isPaused = UserDefaults.standard.bool(forKey: "isPaused")
+        self.addNewTimer = UserDefaults.standard.bool(forKey: "addNewTimer")
+        self.numberOfSets = UserDefaults.standard.integer(forKey: "numberOfSets")
+        self.currentSet = UserDefaults.standard.integer(forKey: "currentSet")
+        self.isAlertSoundOn = UserDefaults.standard.bool(forKey: "isAlertSoundOn")
+        
+//        self.hours = UserDefaults.standard.integer(forKey: "hours")
+//        self.minutes = UserDefaults.standard.integer(forKey: "minutes")
+//        self.seconds = UserDefaults.standard.integer(forKey: "seconds")
+        self.timeLeft = UserDefaults.standard.integer(forKey: "timeLeft")
+        self.secondsPerSet = UserDefaults.standard.integer(forKey: "secondsPerSet")
+//        self.timerStringValue = UserDefaults.standard.string(forKey: "timerStringValue") ?? "00:00"
+//        self.progress = CGFloat(UserDefaults.standard.float(forKey: "progress"))
+        
+        self.stopwatch.elapsedTimeStatic = UserDefaults.standard.double(forKey: "stopwatchElapsedTimeStatic")
+        self.stopwatch.elapsedTime = UserDefaults.standard.double(forKey: "stopwatchElapsedTime")
+        self.stopwatch.isPaused = UserDefaults.standard.bool(forKey: "stopwatchIsPaused")
+        self.stopwatch.mostRecentStartDate = UserDefaults.standard.object(forKey: "stopwatchMostRecentStartDate") as? Date ?? Date()
     }
 }

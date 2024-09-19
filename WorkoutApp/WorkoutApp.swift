@@ -57,6 +57,11 @@ struct WorkoutApp: App {
                     break
             }
         }
+        else if !timerModel.isStarted && newPhase == .background{
+            timerModel.cancelPendingTimerStart()
+            saveTimerState()  // Save the state before going to background
+            startBackgroundTask()
+        }
     }
     
     // Register background task to ensure app is woken up when necessary
@@ -85,7 +90,7 @@ struct WorkoutApp: App {
     // Handle the background task
     private func handleBackgroundTask(task: BGProcessingTask) {
         // Perform any background updates if necessary
-        adjustTimersAfterBackground(pausedSince: Date())  // Use current date
+        adjustTimersAfterBackground(pausedSince: Date(), updateTimer: true, updateStopwatch: true)  // Use current date
 
         // Mark task complete
         task.setTaskCompleted(success: true)
@@ -99,63 +104,54 @@ struct WorkoutApp: App {
     // Save the timer state
     func saveTimerState() {
         // TODO: save if timer / stopwatch are paused and account for this but for now assume both were running
-        timerModel.pauseTimer()
-        timerModel.stopwatch.pause()
-        
-        // Save when the timer was started
-        UserDefaults.standard.set(timerModel.startTime, forKey: "startTime")
-        // Save stopwatch start time
-        UserDefaults.standard.set(timerModel.stopwatch.elapsedTimeStatic, forKey: "stopwatchElapsedTimeStatic")
-        // Save stopwatch start time
-        UserDefaults.standard.set(timerModel.stopwatch.mostRecentStartDate, forKey: "stopwatchMostRecentStartDate")
+        timerModel.saveToUserDefaults()
         // Save when the app was paused
         UserDefaults.standard.set(Date(), forKey: "pausedTime")
     }
 
     // Restore the timer state
     func restoreTimerState() {
-        if let startTime = UserDefaults.standard.value(forKey: "startTime") as? Date,
-           let stopwatchElapsedTimeStatic = UserDefaults.standard.value(forKey: "stopwatchElapsedTimeStatic") as? TimeInterval,
-           let mostRecentStartDate = UserDefaults.standard.value(forKey: "stopwatchMostRecentStartDate") as? Date,
-           let pausedTime = UserDefaults.standard.value(forKey: "pausedTime") as? Date {
-            
-            timerModel.startTime = startTime
-            timerModel.stopwatch.elapsedTimeStatic = stopwatchElapsedTimeStatic
-            timerModel.stopwatch.mostRecentStartDate = mostRecentStartDate
+        if let pausedTime = UserDefaults.standard.value(forKey: "pausedTime") as? Date {
+            timerModel.restoreFromUserDefaults()
             // Adjust the timer state after the app was paused
-            adjustTimersAfterBackground(pausedSince: pausedTime)
+            let updateTimer = timerModel.isStarted && !timerModel.isPaused
+            let updateStopwatch = !timerModel.stopwatch.isPaused
+            adjustTimersAfterBackground(pausedSince: pausedTime, updateTimer: updateTimer, updateStopwatch: updateStopwatch)
         }
     }
     
     // Adjust the timers after returning from background
-    private func adjustTimersAfterBackground(pausedSince: Date) {
+    private func adjustTimersAfterBackground(pausedSince: Date, updateTimer: Bool, updateStopwatch: Bool) {
         let now = Date()
         // Update the stopwatch
-        timerModel.stopwatch.elapsedTimeStatic += now.timeIntervalSince(timerModel.stopwatch.mostRecentStartDate)
-        timerModel.stopwatch.elapsedTime = timerModel.stopwatch.elapsedTimeStatic
+        if updateStopwatch {
+            timerModel.stopwatch.elapsedTimeStatic += now.timeIntervalSince(timerModel.stopwatch.mostRecentStartDate)
+            timerModel.stopwatch.elapsedTime = timerModel.stopwatch.elapsedTimeStatic
+            
+            // Update the most recent start date to now
+            timerModel.stopwatch.mostRecentStartDate = now
+        }
         
-        // Update the most recent start date to now
-        timerModel.stopwatch.mostRecentStartDate = now
-
-        // Adjust the timer
-        let totalElapsedTime = Int(now.timeIntervalSince(timerModel.startTime))
-        
-        // Calculate how much time was left in the current set before background
-        let currentSetElapsedTime = totalElapsedTime % timerModel.secondsPerSet
-        let timeLeftInSet = timerModel.secondsPerSet - currentSetElapsedTime
-
-        // Update the current set and remaining time
-        let setsCompleted = totalElapsedTime / timerModel.secondsPerSet
-        if setsCompleted >= timerModel.numberOfSets {
-            // Timer finished
-            timerModel.isStarted = false
-            timerModel.isPaused = true
-            timerModel.isFinished = true
-            timerModel.timeLeft = 0
-        } else {
-            timerModel.currentSet = setsCompleted + 1
-            timerModel.timeLeft = timeLeftInSet
-            timerModel.resumeTimer()
+        if updateTimer {
+            // Adjust the timer
+            let totalElapsedTime = Int(now.timeIntervalSince(timerModel.startTime))
+            
+            // Calculate how much time was left in the current set before background
+            let currentSetElapsedTime = totalElapsedTime % timerModel.secondsPerSet
+            let timeLeftInSet = timerModel.secondsPerSet - currentSetElapsedTime
+            
+            // Update the current set and remaining time
+            let setsCompleted = totalElapsedTime / timerModel.secondsPerSet
+            if setsCompleted >= timerModel.numberOfSets {
+                // Timer finished
+                timerModel.isStarted = false
+                timerModel.isPaused = true
+                timerModel.isFinished = true
+                timerModel.timeLeft = 0
+            } else {
+                timerModel.currentSet = setsCompleted + 1
+                timerModel.timeLeft = timeLeftInSet
+            }
         }
     }
 }
