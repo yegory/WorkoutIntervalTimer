@@ -12,12 +12,14 @@
 		A77053872C9287EC00A3EA7F /* TimerSetUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77053862C9287EC00A3EA7F /* TimerSetUpView.swift */; };
 		A77053892C9291B700A3EA7F /* NumbersOnlyViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77053882C9291B700A3EA7F /* NumbersOnlyViewModifier.swift */; };
 		A78D604F2C86DA54009DC239 /* WorkoutApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78D604E2C86DA54009DC239 /* WorkoutApp.swift */; };
-		A78D60512C86DA54009DC239 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78D60502C86DA54009DC239 /* ContentView.swift */; };
 		A78D60532C86DA56009DC239 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A78D60522C86DA56009DC239 /* Assets.xcassets */; };
 		A78D60562C86DA56009DC239 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A78D60552C86DA56009DC239 /* Preview Assets.xcassets */; };
 		A78D605F2C86DABA009DC239 /* TimerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78D605E2C86DABA009DC239 /* TimerModel.swift */; };
 		A78D60612C86DBD4009DC239 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78D60602C86DBD4009DC239 /* TimerView.swift */; };
 		A79381172C9CB86D00B7541A /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79381162C9CB86D00B7541A /* ProgressBarView.swift */; };
+		A79381192C9CD50700B7541A /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79381182C9CD50700B7541A /* SideMenuView.swift */; };
+		A793811B2C9CD59500B7541A /* SideMenuHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A793811A2C9CD59500B7541A /* SideMenuHeaderView.swift */; };
+		A793811D2C9CE19B00B7541A /* SideMenuRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A793811C2C9CE19B00B7541A /* SideMenuRowView.swift */; };
 		A79776912C956046009DB4FA /* prepare_beeps_pan.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A79776902C956046009DB4FA /* prepare_beeps_pan.mp3 */; };
 		A79776932C956076009DB4FA /* prepare_beeps_mono.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A79776922C956076009DB4FA /* prepare_beeps_mono.mp3 */; };
 		A79776952C956139009DB4FA /* prepare_beeps_pan_trim.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A79776942C956138009DB4FA /* prepare_beeps_pan_trim.mp3 */; };
@@ -27,6 +29,10 @@
 		A79776A02C95699F009DB4FA /* archive_normal.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A797769E2C95699F009DB4FA /* archive_normal.mp3 */; };
 		A79776A12C95699F009DB4FA /* archive_loud.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A797769F2C95699F009DB4FA /* archive_loud.mp3 */; };
 		A79776A32C9569C0009DB4FA /* blip_loud.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A79776A22C9569C0009DB4FA /* blip_loud.mp3 */; };
+		A79E332D2C9CE39300E4A336 /* SideMenuOptionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79E332C2C9CE39300E4A336 /* SideMenuOptionModel.swift */; };
+		A79E332F2C9CF2C900E4A336 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79E332E2C9CF2C900E4A336 /* HomeView.swift */; };
+		A79E33312C9CF4BA00E4A336 /* TimerLifecycleHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79E33302C9CF4BA00E4A336 /* TimerLifecycleHandler.swift */; };
+		A79E33332C9CF99200E4A336 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79E33322C9CF99200E4A336 /* DashboardView.swift */; };
 		A7A76E3B2C9797A5007FC830 /* xylophone_normal.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A7A76E392C9797A4007FC830 /* xylophone_normal.mp3 */; };
 		A7A76E3C2C9797A5007FC830 /* xylophone_loud.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A7A76E3A2C9797A4007FC830 /* xylophone_loud.mp3 */; };
 		A7B13BAC2C87EC8600CF52A6 /* TimePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B13BAB2C87EC8600CF52A6 /* TimePickerView.swift */; };
@@ -39,12 +45,14 @@
 		A77053882C9291B700A3EA7F /* NumbersOnlyViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumbersOnlyViewModifier.swift; sourceTree = "<group>"; };
 		A78D604B2C86DA54009DC239 /* WorkoutApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorkoutApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A78D604E2C86DA54009DC239 /* WorkoutApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutApp.swift; sourceTree = "<group>"; };
-		A78D60502C86DA54009DC239 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A78D60522C86DA56009DC239 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A78D60552C86DA56009DC239 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A78D605E2C86DABA009DC239 /* TimerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerModel.swift; sourceTree = "<group>"; };
 		A78D60602C86DBD4009DC239 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		A79381162C9CB86D00B7541A /* ProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarView.swift; sourceTree = "<group>"; };
+		A79381182C9CD50700B7541A /* SideMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuView.swift; sourceTree = "<group>"; };
+		A793811A2C9CD59500B7541A /* SideMenuHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuHeaderView.swift; sourceTree = "<group>"; };
+		A793811C2C9CE19B00B7541A /* SideMenuRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuRowView.swift; sourceTree = "<group>"; };
 		A79776902C956046009DB4FA /* prepare_beeps_pan.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = prepare_beeps_pan.mp3; sourceTree = "<group>"; };
 		A79776922C956076009DB4FA /* prepare_beeps_mono.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = prepare_beeps_mono.mp3; sourceTree = "<group>"; };
 		A79776942C956138009DB4FA /* prepare_beeps_pan_trim.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = prepare_beeps_pan_trim.mp3; sourceTree = "<group>"; };
@@ -54,6 +62,10 @@
 		A797769E2C95699F009DB4FA /* archive_normal.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = archive_normal.mp3; sourceTree = "<group>"; };
 		A797769F2C95699F009DB4FA /* archive_loud.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = archive_loud.mp3; sourceTree = "<group>"; };
 		A79776A22C9569C0009DB4FA /* blip_loud.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = blip_loud.mp3; sourceTree = "<group>"; };
+		A79E332C2C9CE39300E4A336 /* SideMenuOptionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuOptionModel.swift; sourceTree = "<group>"; };
+		A79E332E2C9CF2C900E4A336 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		A79E33302C9CF4BA00E4A336 /* TimerLifecycleHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerLifecycleHandler.swift; sourceTree = "<group>"; };
+		A79E33322C9CF99200E4A336 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
 		A7A76E392C9797A4007FC830 /* xylophone_normal.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = xylophone_normal.mp3; sourceTree = "<group>"; };
 		A7A76E3A2C9797A4007FC830 /* xylophone_loud.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = xylophone_loud.mp3; sourceTree = "<group>"; };
 		A7B13BAB2C87EC8600CF52A6 /* TimePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerView.swift; sourceTree = "<group>"; };
@@ -94,6 +106,7 @@
 				A77053802C92443400A3EA7F /* SoundManager.swift */,
 				A77053882C9291B700A3EA7F /* NumbersOnlyViewModifier.swift */,
 				A77053842C924E7900A3EA7F /* Stopwatch.swift */,
+				A79E332C2C9CE39300E4A336 /* SideMenuOptionModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -122,7 +135,6 @@
 				A78D605D2C86DA92009DC239 /* ViewModel */,
 				A78D605C2C86DA8E009DC239 /* View */,
 				A78D604E2C86DA54009DC239 /* WorkoutApp.swift */,
-				A78D60502C86DA54009DC239 /* ContentView.swift */,
 				A78D60522C86DA56009DC239 /* Assets.xcassets */,
 				A78D60542C86DA56009DC239 /* Preview Content */,
 			);
@@ -140,10 +152,13 @@
 		A78D605C2C86DA8E009DC239 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A79E332A2C9CE2A200E4A336 /* SideMenu */,
 				A78D60602C86DBD4009DC239 /* TimerView.swift */,
 				A7B13BAB2C87EC8600CF52A6 /* TimePickerView.swift */,
 				A77053862C9287EC00A3EA7F /* TimerSetUpView.swift */,
 				A79381162C9CB86D00B7541A /* ProgressBarView.swift */,
+				A79E332E2C9CF2C900E4A336 /* HomeView.swift */,
+				A79E33322C9CF99200E4A336 /* DashboardView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -152,8 +167,19 @@
 			isa = PBXGroup;
 			children = (
 				A78D605E2C86DABA009DC239 /* TimerModel.swift */,
+				A79E33302C9CF4BA00E4A336 /* TimerLifecycleHandler.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		A79E332A2C9CE2A200E4A336 /* SideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				A79381182C9CD50700B7541A /* SideMenuView.swift */,
+				A793811A2C9CD59500B7541A /* SideMenuHeaderView.swift */,
+				A793811C2C9CE19B00B7541A /* SideMenuRowView.swift */,
+			);
+			path = SideMenu;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -238,13 +264,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				A7B13BAC2C87EC8600CF52A6 /* TimePickerView.swift in Sources */,
+				A79E33332C9CF99200E4A336 /* DashboardView.swift in Sources */,
 				A78D605F2C86DABA009DC239 /* TimerModel.swift in Sources */,
 				A77053892C9291B700A3EA7F /* NumbersOnlyViewModifier.swift in Sources */,
+				A79E332F2C9CF2C900E4A336 /* HomeView.swift in Sources */,
 				A77053872C9287EC00A3EA7F /* TimerSetUpView.swift in Sources */,
-				A78D60512C86DA54009DC239 /* ContentView.swift in Sources */,
+				A79E33312C9CF4BA00E4A336 /* TimerLifecycleHandler.swift in Sources */,
+				A79381192C9CD50700B7541A /* SideMenuView.swift in Sources */,
+				A793811D2C9CE19B00B7541A /* SideMenuRowView.swift in Sources */,
 				A78D60612C86DBD4009DC239 /* TimerView.swift in Sources */,
+				A79E332D2C9CE39300E4A336 /* SideMenuOptionModel.swift in Sources */,
 				A78D604F2C86DA54009DC239 /* WorkoutApp.swift in Sources */,
 				A77053812C92443400A3EA7F /* SoundManager.swift in Sources */,
+				A793811B2C9CD59500B7541A /* SideMenuHeaderView.swift in Sources */,
 				A77053852C924E7900A3EA7F /* Stopwatch.swift in Sources */,
 				A79381172C9CB86D00B7541A /* ProgressBarView.swift in Sources */,
 			);
